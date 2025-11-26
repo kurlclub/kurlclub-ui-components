@@ -4,7 +4,10 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": false,
+    "verbatimModuleSyntax": false
   },
   "include": ["src"],
   "exclude": ["**/*.test.tsx", "**/*.stories.tsx", "src/**/*.test.ts"]
