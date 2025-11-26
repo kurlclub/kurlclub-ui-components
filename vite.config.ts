@@ -19,7 +19,15 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
-    ...(mode === 'lib' ? [dts({ include: ['src/**/*'], outDir: 'dist' })] : []),
+    ...(mode === 'lib'
+      ? [
+          dts({
+            tsconfigPath: './tsconfig.build.json',
+            outDir: 'dist',
+            insertTypesEntry: true,
+          }),
+        ]
+      : []),
   ],
   resolve: {
     alias: {
@@ -37,7 +45,16 @@ export default defineConfig(({ mode }) => ({
           },
           cssCodeSplit: false,
           rollupOptions: {
-            external: ['react', 'react-dom'],
+            external: [
+              'react',
+              'react-dom',
+              'react/jsx-runtime',
+              '@radix-ui/react-slot',
+              'class-variance-authority',
+              'clsx',
+              'tailwind-merge',
+              'lucide-react',
+            ],
             output: {
               globals: {
                 react: 'React',

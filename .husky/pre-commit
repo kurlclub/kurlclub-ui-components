@@ -24,7 +24,7 @@ npm run check-types ||
 # If everything passes... Now we can build
 echo -e '\033[0;34m🔍 Code checks passed. Initiating build process...\033[0m'
 
-npm run build ||
+npm run build:lib ||
 (
     echo -e '\033[0;31m❌ Build failed. Review the errors above and resolve them before committing.\033[0m'
     false
