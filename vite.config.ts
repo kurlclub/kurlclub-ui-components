@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
-    ...(mode === 'lib' ? [dts({ include: ['src/components'] })] : []),
+    ...(mode === 'lib' ? [dts({ include: ['src/**/*'], outDir: 'dist' })] : []),
   ],
   resolve: {
     alias: {
