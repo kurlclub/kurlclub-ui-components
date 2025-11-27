@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 
 import '../src/index.css';
+import { kurlClubTheme } from './theme';
 
 const preview: Preview = {
   parameters: {
@@ -16,6 +17,30 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: 'todo',
+    },
+
+    docs: {
+      theme: kurlClubTheme,
+    },
+
+    backgrounds: {
+      options: {
+        dark: {
+          name: 'dark',
+          value: '#11141c',
+        },
+
+        light: {
+          name: 'light',
+          value: '#ffffff',
+        },
+      },
+    },
+  },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'dark',
     },
   },
 };
