@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Internal use only - KurlClub Development Team
