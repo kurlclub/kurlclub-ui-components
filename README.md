@@ -112,39 +112,6 @@ function App() {
 }
 ```
 
-## Troubleshooting IntelliSense
-
-If auto-suggestions are not working in VS Code when importing components:
-
-### Enable Auto-Imports Globally
-
-1. Open VS Code Settings (`Cmd+,` or `Ctrl+,`)
-2. Search for: `auto imports`
-3. Enable these settings:
-   - ✅ **TypeScript › Suggest: Auto Imports**
-   - ✅ **JavaScript › Suggest: Auto Imports**
-4. Search for: `include package json`
-5. Set **TypeScript › Preferences: Include Package Json Auto Imports** to `on`
-
-### Restart TypeScript Server
-
-1. Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
-2. Type: "TypeScript: Restart TS Server"
-3. Press Enter
-
-### Verify Installation
-
-Check that the package is installed correctly:
-
-```bash
-ls -la node_modules/@kurlclub/ui-components/dist/
-cat node_modules/@kurlclub/ui-components/package.json | grep "types"
-```
-
-You should see `"types": "./dist/index.d.ts"`
-
-If issues persist, restart VS Code completely.
-
 ## License
 
 MIT © Kurl Club
