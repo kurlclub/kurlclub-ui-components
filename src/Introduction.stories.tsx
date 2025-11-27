@@ -54,7 +54,11 @@ const IntroductionPage = () => (
           KurlClub
           <br />
           <span
-            style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', color: '#d3f702', fontWeight: '700' }}
+            style={{
+              fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
+              color: '#d3f702',
+              fontWeight: '700',
+            }}
           >
             Design System
           </span>
@@ -130,11 +134,21 @@ const IntroductionPage = () => (
 
     {/* Main Content */}
     <div
-      style={{ padding: 'clamp(2rem, 5vw, 3.5rem) 1rem', maxWidth: '1200px', margin: '0 auto' }}
+      style={{
+        padding: 'clamp(2rem, 5vw, 3.5rem) 1rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+      }}
     >
       {/* Getting Started Section */}
       <div style={{ marginBottom: '4rem' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto 2.5rem', padding: '0 1rem' }}>
+        <div
+          style={{
+            maxWidth: '700px',
+            margin: '0 auto 2.5rem',
+            padding: '0 1rem',
+          }}
+        >
           <h2
             style={{
               fontSize: '1.875rem',
@@ -320,7 +334,8 @@ export default {
             maxWidth: '900px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+            gridTemplateColumns:
+              'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
             gap: '2rem 3rem',
           }}
         >
@@ -429,7 +444,8 @@ export default {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr)),',
+            gridTemplateColumns:
+              'repeat(auto-fit, minmax(min(100%, 140px), 1fr)),',
             gap: '1rem',
           }}
         >
@@ -439,7 +455,7 @@ export default {
             { label: 'Tailwind', value: '4.x' },
             { label: 'Radix UI', value: 'Latest' },
             { label: 'Storybook', value: '10.x' },
-            { label: 'Version', value: 'v0.2.0' },
+            { label: 'Version', value: 'v0.2.1' },
           ].map((tech) => (
             <div
               key={tech.label}
