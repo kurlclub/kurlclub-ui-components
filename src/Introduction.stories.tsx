@@ -25,7 +25,7 @@ const IntroductionPage = () => (
         borderBottom: '1px solid rgba(211, 247, 2, 0.2)',
       }}
     >
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1rem' }}>
         <div
           style={{
             display: 'inline-block',
@@ -44,7 +44,7 @@ const IntroductionPage = () => (
 
         <h1
           style={{
-            fontSize: '3rem',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '800',
             marginBottom: '1rem',
             color: '#fff',
@@ -54,7 +54,7 @@ const IntroductionPage = () => (
           KurlClub
           <br />
           <span
-            style={{ fontSize: '2.25rem', color: '#d3f702', fontWeight: '700' }}
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', color: '#d3f702', fontWeight: '700' }}
           >
             Design System
           </span>
@@ -62,7 +62,7 @@ const IntroductionPage = () => (
 
         <p
           style={{
-            fontSize: '1.0625rem',
+            fontSize: 'clamp(0.9375rem, 2vw, 1.0625rem)',
             color: '#b5b6b9',
             marginBottom: '2rem',
             lineHeight: '1.6',
@@ -130,11 +130,11 @@ const IntroductionPage = () => (
 
     {/* Main Content */}
     <div
-      style={{ padding: '3.5rem 2rem', maxWidth: '1200px', margin: '0 auto' }}
+      style={{ padding: 'clamp(2rem, 5vw, 3.5rem) 1rem', maxWidth: '1200px', margin: '0 auto' }}
     >
       {/* Getting Started Section */}
       <div style={{ marginBottom: '4rem' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto 2.5rem' }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto 2.5rem', padding: '0 1rem' }}>
           <h2
             style={{
               fontSize: '1.875rem',
@@ -320,7 +320,7 @@ export default {
             maxWidth: '900px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
             gap: '2rem 3rem',
           }}
         >
@@ -429,7 +429,7 @@ export default {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr)),',
             gap: '1rem',
           }}
         >
