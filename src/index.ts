@@ -25,8 +25,34 @@ export {
 export { Button } from './components/composed';
 export type { ButtonProps } from './components/composed';
 
-export { AppSidebar } from './components/composed';
-export type { AppSidebarProps, NavItem } from './components/composed';
+export { AppSidebar, AppLayout, AppHeader } from './components/composed';
+export type {
+  AppSidebarProps,
+  NavItem,
+  AppLayoutProps,
+  AppHeaderProps,
+} from './components/composed';
+
+// Form components
+export {
+  KInput,
+  KMultiSelect,
+  KPassword,
+  KSelect,
+  KSheet,
+  KSwitch,
+  KTabs,
+  KTextarea,
+  KDialog,
+  EditableFormField,
+} from './components/composed';
+export type {
+  Option,
+  TabItem,
+  TabVariant,
+  KTabsProps,
+  SheetProps,
+} from './components/composed';
 
 // Theme
 export { theme, themeNames, themePlugin } from './styles/theme';
