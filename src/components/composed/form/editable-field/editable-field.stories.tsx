@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { EditableFormField } from './editable-form-field';
+import { EditableFormField } from './editable-field';
 
 const meta = {
-  title: 'Components/Form/EditableFormField',
+  title: 'Components/Form/EditableField',
   component: EditableFormField,
   parameters: {
     layout: 'centered',

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Home, Settings, User } from 'lucide-react';
 
-import { KTabs } from './k-tabs';
+import { Tabs } from './tabs';
 
 const meta = {
-  title: 'Components/Form/KTabs',
-  component: KTabs,
+  title: 'Components/Form/Tabs',
+  component: Tabs,
   parameters: {
     layout: 'centered',
   },

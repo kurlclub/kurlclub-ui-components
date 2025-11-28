@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../button/button';
-import { KDialog } from './k-dialog';
+import { Button } from '../../button/button';
+import { Dialog } from './dialog';
 
 const meta = {
-  title: 'Components/Form/KDialog',
-  component: KDialog,
+  title: 'Components/Form/Dialog',
+  component: Dialog,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof KDialog>;
+} satisfies Meta<typeof Dialog>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,7 +21,7 @@ export const Default: Story = {
   render: function Component() {
     const [open, setOpen] = useState(false);
     return (
-      <KDialog
+      <Dialog
         title="Confirm Action"
         open={open}
         onOpenChange={() => setOpen(!open)}
@@ -38,7 +38,7 @@ export const Default: Story = {
         <p className="text-white">
           Are you sure you want to proceed with this action?
         </p>
-      </KDialog>
+      </Dialog>
     );
   },
 };
@@ -47,7 +47,7 @@ export const WithoutFooter: Story = {
   render: function Component() {
     const [open, setOpen] = useState(false);
     return (
-      <KDialog
+      <Dialog
         title="Information"
         open={open}
         onOpenChange={() => setOpen(!open)}
@@ -56,7 +56,7 @@ export const WithoutFooter: Story = {
         <p className="text-white">
           This is an informational dialog without footer actions.
         </p>
-      </KDialog>
+      </Dialog>
     );
   },
 };
@@ -65,13 +65,13 @@ export const WithoutTitle: Story = {
   render: function Component() {
     const [open, setOpen] = useState(false);
     return (
-      <KDialog
+      <Dialog
         open={open}
         onOpenChange={() => setOpen(!open)}
         trigger={<Button onClick={() => setOpen(true)}>Open</Button>}
       >
         <p className="text-white">Dialog content without a title.</p>
-      </KDialog>
+      </Dialog>
     );
   },
 };

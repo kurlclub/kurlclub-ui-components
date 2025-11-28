@@ -4,16 +4,20 @@ import * as React from 'react';
 
 import { X } from 'lucide-react';
 
-import { cn } from '../../../lib/utils';
-import { Badge } from '../../ui/badge';
+import { Badge } from '@/components/composed/badge/badge';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandItem,
   CommandList,
-} from '../../ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+} from '@/components/ui/command';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 export type Option = {
   value: string;
@@ -21,7 +25,7 @@ export type Option = {
   disabled?: boolean;
 };
 
-type KMultiSelectProps = {
+type MultiSelectProps = {
   options: Option[];
   selected: Option[];
   onChange: (selected: Option[]) => void;
@@ -35,7 +39,7 @@ type KMultiSelectProps = {
   onBlur?: React.FocusEventHandler<HTMLDivElement>;
 };
 
-export function KMultiSelect({
+export function MultiSelect({
   options,
   selected,
   onChange,
@@ -47,7 +51,7 @@ export function KMultiSelect({
   disabled = false,
   onFocus,
   onBlur,
-}: KMultiSelectProps) {
+}: MultiSelectProps) {
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
 
@@ -64,6 +68,7 @@ export function KMultiSelect({
         onChange(selected.slice(0, -1));
       }
 
+      // Close dropdown on escape
       if (e.key === 'Escape') {
         setOpen(false);
       }
@@ -71,11 +76,13 @@ export function KMultiSelect({
     [inputValue, onChange, selected]
   );
 
+  // Filter out options that are already selected or disabled
   const selectableOptions = options.filter(
     (option) =>
       !selected.some((s) => s.value === option.value) && !option.disabled
   );
 
+  // Filter options based on input value
   const filteredOptions = selectableOptions.filter((option) =>
     option.label.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -135,7 +142,7 @@ export function KMultiSelect({
         </div>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[var(--radix-popover-trigger-width)] pointer-events-auto shad-select-content p-0"
+        className="w-(--radix-popover-trigger-width) pointer-events-auto shad-select-content p-0"
         align="start"
       >
         <div className="p-2 border-b border-primary-blue-400">
@@ -160,18 +167,26 @@ export function KMultiSelect({
               {emptyMessage}
             </CommandEmpty>
             <CommandGroup>
-              {filteredOptions.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  onSelect={() => {
-                    onChange([...selected, option]);
-                    setInputValue('');
-                  }}
-                  className="shad-select-item cursor-pointer"
-                >
-                  {option.label}
-                </CommandItem>
-              ))}
+              {isMaxSelected ? (
+                <div className="py-6 text-center text-sm text-primary-blue-100">
+                  Maximum {maxSelected} selections reached
+                </div>
+              ) : (
+                filteredOptions.map((option) => (
+                  <CommandItem
+                    key={option.value}
+                    onSelect={() => {
+                      if (!isMaxSelected) {
+                        onChange([...selected, option]);
+                        setInputValue('');
+                      }
+                    }}
+                    className="shad-select-item cursor-pointer"
+                  >
+                    {option.label}
+                  </CommandItem>
+                ))
+              )}
             </CommandGroup>
           </CommandList>
         </Command>

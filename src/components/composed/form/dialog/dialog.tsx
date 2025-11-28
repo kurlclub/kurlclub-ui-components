@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import {
-  Dialog,
+  Dialog as BaseDialog,
   DialogContent,
   DialogFooter,
   DialogTitle,
   DialogTrigger,
-} from '../../ui/dialog';
+} from '@/components/ui/dialog';
 
-interface KDialogProps {
+interface DialogProps {
   title?: string;
   trigger?: React.ReactNode;
   children: React.ReactNode;
@@ -19,7 +19,7 @@ interface KDialogProps {
   onOpenChange?: () => void;
 }
 
-const KDialog: React.FC<KDialogProps> = ({
+const Dialog: React.FC<DialogProps> = ({
   title,
   trigger,
   children,
@@ -29,7 +29,7 @@ const KDialog: React.FC<KDialogProps> = ({
   footer,
 }) => {
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <BaseDialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
         className={`bg-primary-blue-500 border-secondary-blue-500 rounded-lg! max-w-full ${className}`}
@@ -38,8 +38,8 @@ const KDialog: React.FC<KDialogProps> = ({
         {children}
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>
-    </Dialog>
+    </BaseDialog>
   );
 };
 
-export { KDialog };
+export { Dialog };

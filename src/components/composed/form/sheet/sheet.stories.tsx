@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../button/button';
-import { KSheet } from './k-sheet';
+import { Button } from '../../button/button';
+import { Sheet } from './sheet';
 
 const meta = {
-  title: 'Components/Form/KSheet',
-  component: KSheet,
+  title: 'Components/Form/Sheet',
+  component: Sheet,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof KSheet>;
+} satisfies Meta<typeof Sheet>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -23,7 +23,7 @@ export const Right: Story = {
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open Sheet (Right)</Button>
-        <KSheet
+        <Sheet
           title="Edit Profile"
           isOpen={open}
           onClose={setOpen}
@@ -40,7 +40,7 @@ export const Right: Story = {
           <div className="space-y-4">
             <p className="text-white">Sheet content goes here...</p>
           </div>
-        </KSheet>
+        </Sheet>
       </>
     );
   },
@@ -52,11 +52,11 @@ export const Left: Story = {
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open Sheet (Left)</Button>
-        <KSheet title="Filters" isOpen={open} onClose={setOpen} position="left">
+        <Sheet title="Filters" isOpen={open} onClose={setOpen} position="left">
           <div className="space-y-4">
             <p className="text-white">Filter options...</p>
           </div>
-        </KSheet>
+        </Sheet>
       </>
     );
   },
@@ -68,7 +68,7 @@ export const WithDescription: Story = {
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open Sheet</Button>
-        <KSheet
+        <Sheet
           title="Settings"
           description="Manage your account settings and preferences"
           isOpen={open}
@@ -77,7 +77,7 @@ export const WithDescription: Story = {
           <div className="space-y-4">
             <p className="text-white">Settings content...</p>
           </div>
-        </KSheet>
+        </Sheet>
       </>
     );
   },

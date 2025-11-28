@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { KSelect } from './k-select';
+import { Select } from './select';
 
 const meta = {
-  title: 'Components/Form/KSelect',
-  component: KSelect,
+  title: 'Components/Form/Select',
+  component: Select,
   parameters: {
     layout: 'centered',
   },

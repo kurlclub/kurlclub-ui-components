@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { KPassword } from './k-password';
+import { Password } from './password';
 
 const meta = {
-  title: 'Components/Form/KPassword',
-  component: KPassword,
+  title: 'Components/Form/Password',
+  component: Password,
   parameters: {
     layout: 'centered',
   },

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { KSwitch } from './k-switch';
+import { Switch } from './switch';
 
 const meta = {
-  title: 'Components/Form/KSwitch',
-  component: KSwitch,
+  title: 'Components/Form/Switch',
+  component: Switch,
   parameters: {
     layout: 'centered',
   },

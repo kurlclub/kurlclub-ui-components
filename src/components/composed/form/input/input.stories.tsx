@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { KInput } from './k-input';
+import { Input } from './input';
 
 const meta = {
-  title: 'Components/Form/KInput',
-  component: KInput,
+  title: 'Components/Form/Input',
+  component: Input,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof KInput>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

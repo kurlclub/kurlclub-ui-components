@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
 
 export type TabVariant = 'vertical' | 'underline';
 
@@ -10,7 +10,7 @@ export interface TabItem {
   icon?: LucideIcon;
 }
 
-export interface KTabsProps {
+export interface TabsProps {
   items: TabItem[];
   variant?: TabVariant;
   value?: string;
@@ -18,13 +18,13 @@ export interface KTabsProps {
   className?: string;
 }
 
-export function KTabs({
+export function Tabs({
   items,
   variant = 'vertical',
   value,
   onTabChange,
   className,
-}: KTabsProps) {
+}: TabsProps) {
   return (
     <div
       className={cn(

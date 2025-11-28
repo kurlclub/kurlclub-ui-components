@@ -1,23 +1,27 @@
 'use client';
 
-import { Switch } from '../../ui/switch';
+import { Switch as BaseSwitch } from '@/components/ui/switch';
 
-interface KSwitchProps {
+interface SwitchProps {
   label: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   labelClass?: string;
 }
 
-export function KSwitch({
+export function Switch({
   label,
   checked,
   onCheckedChange,
   labelClass,
-}: KSwitchProps) {
+}: SwitchProps) {
   return (
     <div className="flex items-center gap-3 cursor-pointer">
-      <Switch id={label} checked={checked} onCheckedChange={onCheckedChange} />
+      <BaseSwitch
+        id={label}
+        checked={checked}
+        onCheckedChange={onCheckedChange}
+      />
       {label && (
         <label
           htmlFor={label}

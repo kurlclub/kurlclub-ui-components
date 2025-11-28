@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { KTextarea } from './k-textarea';
+import { Textarea } from './textarea';
 
 const meta = {
-  title: 'Components/Form/KTextarea',
-  component: KTextarea,
+  title: 'Components/Form/Textarea',
+  component: Textarea,
   parameters: {
     layout: 'centered',
   },

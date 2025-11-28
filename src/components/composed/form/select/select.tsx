@@ -1,21 +1,21 @@
 import * as React from 'react';
 
 import {
-  Select,
+  Select as BaseSelect,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../../ui/select';
+} from '@/components/ui/select';
 
 interface Option {
   label: string;
   value: string;
 }
 
-export const KSelect = React.forwardRef<
+export const Select = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Select> & {
+  React.ComponentPropsWithoutRef<typeof BaseSelect> & {
     label?: string;
     options?: Option[];
     className?: string;
@@ -42,7 +42,7 @@ export const KSelect = React.forwardRef<
 
     return (
       <div ref={ref} className="relative w-full">
-        <Select
+        <BaseSelect
           {...props}
           value={value}
           onValueChange={(val) => {
@@ -68,7 +68,7 @@ export const KSelect = React.forwardRef<
               </SelectItem>
             ))}
           </SelectContent>
-        </Select>
+        </BaseSelect>
         {label && (
           <label
             className={`absolute text-sm duration-300 text-primary-blue-100 transform -translate-y-3.5 scale-75 z-10 origin-[0] cursor-pointer
@@ -91,4 +91,4 @@ export const KSelect = React.forwardRef<
     );
   }
 );
-KSelect.displayName = 'KSelect';
+Select.displayName = 'Select';

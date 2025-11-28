@@ -2,14 +2,14 @@
 
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
 
-interface KTextareaProps
+interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
 }
 
-const KTextarea = forwardRef<HTMLTextAreaElement, KTextareaProps>(
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, value, defaultValue, onChange, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
     const localRef = useRef<HTMLTextAreaElement | null>(null);
@@ -78,6 +78,6 @@ const KTextarea = forwardRef<HTMLTextAreaElement, KTextareaProps>(
   }
 );
 
-KTextarea.displayName = 'KTextarea';
+Textarea.displayName = 'Textarea';
 
-export { KTextarea };
+export { Textarea };

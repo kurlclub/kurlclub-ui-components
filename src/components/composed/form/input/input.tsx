@@ -2,10 +2,10 @@
 
 import { forwardRef, useState } from 'react';
 
-import { cn } from '../../../lib/utils';
-import { Input } from '../../ui/input';
+import { Input as BaseInput } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
-interface KInputProps
+interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label: string;
   className?: string;
@@ -15,7 +15,7 @@ interface KInputProps
   size?: 'sm' | 'default';
 }
 
-const KInput = forwardRef<HTMLInputElement, KInputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -46,7 +46,7 @@ const KInput = forwardRef<HTMLInputElement, KInputProps>(
 
     return (
       <div className="relative">
-        <Input
+        <BaseInput
           type={type}
           className={cn(
             'k-input bg-secondary-blue-500',
@@ -101,6 +101,6 @@ const KInput = forwardRef<HTMLInputElement, KInputProps>(
   }
 );
 
-KInput.displayName = 'KInput';
+Input.displayName = 'Input';
 
-export { KInput };
+export { Input };

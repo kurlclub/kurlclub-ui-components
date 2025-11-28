@@ -4,13 +4,13 @@ import { forwardRef, useState } from 'react';
 
 import { Eye, EyeOff } from 'lucide-react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
 
-interface KPasswordProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface PasswordProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const KPassword = forwardRef<HTMLInputElement, KPasswordProps>(
+const Password = forwardRef<HTMLInputElement, PasswordProps>(
   ({ className, label, onChange, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
     const [hasContent, setHasContent] = useState(false);
@@ -76,6 +76,6 @@ const KPassword = forwardRef<HTMLInputElement, KPasswordProps>(
   }
 );
 
-KPassword.displayName = 'KPassword';
+Password.displayName = 'Password';
 
-export { KPassword };
+export { Password };

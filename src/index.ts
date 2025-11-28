@@ -22,8 +22,8 @@ export {
 } from './components/ui/sidebar';
 
 // Composed components (custom)
-export { Button } from './components/composed';
-export type { ButtonProps } from './components/composed';
+export { Button, Badge } from './components/composed';
+export type { ButtonProps, BadgeProps } from './components/composed';
 
 export { AppSidebar, AppLayout, AppHeader } from './components/composed';
 export type {
@@ -35,22 +35,22 @@ export type {
 
 // Form components
 export {
-  KInput,
-  KMultiSelect,
-  KPassword,
-  KSelect,
-  KSheet,
-  KSwitch,
-  KTabs,
-  KTextarea,
-  KDialog,
+  Input,
+  MultiSelect,
+  Password,
+  Select,
+  Sheet,
+  Switch,
+  Tabs,
+  Textarea,
+  Dialog,
   EditableFormField,
 } from './components/composed';
 export type {
   Option,
   TabItem,
   TabVariant,
-  KTabsProps,
+  TabsProps,
   SheetProps,
 } from './components/composed';
 

@@ -1,12 +1,12 @@
 'use client';
 
 import {
-  Sheet,
+  Sheet as BaseSheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '../../ui/sheet';
+} from '@/components/ui/sheet';
 
 export interface SheetProps {
   title?: string;
@@ -19,7 +19,7 @@ export interface SheetProps {
   className?: string;
 }
 
-export const KSheet = ({
+export const Sheet = ({
   title,
   description,
   children,
@@ -30,7 +30,7 @@ export const KSheet = ({
   className,
 }: SheetProps) => {
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <BaseSheet open={isOpen} onOpenChange={onClose}>
       <SheetContent
         side={position}
         className={`bg-secondary-blue-700 border-primary-blue-400 border p-0 max-w-full! flex flex-col ${className}`}
@@ -50,6 +50,6 @@ export const KSheet = ({
           </div>
         )}
       </SheetContent>
-    </Sheet>
+    </BaseSheet>
   );
 };

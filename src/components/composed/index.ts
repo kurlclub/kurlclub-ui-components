@@ -2,6 +2,9 @@
 export { Button } from './button/button';
 export type { ButtonProps } from './button/button';
 
+export { Badge } from './badge/badge';
+export type { BadgeProps } from './badge/badge';
+
 export { AppLayout, AppHeader, AppSidebar } from './layout';
 export type {
   AppLayoutProps,
@@ -11,17 +14,17 @@ export type {
 } from './layout';
 
 export {
-  KInput,
-  KMultiSelect,
-  KPassword,
-  KSelect,
-  KSheet,
-  KSwitch,
-  KTabs,
-  KTextarea,
-  KDialog,
+  Input,
+  MultiSelect,
+  Password,
+  Select,
+  Sheet,
+  Switch,
+  Tabs,
+  Textarea,
+  Dialog,
   EditableFormField,
 } from './form';
-export type { Option } from './form/k-multi-select';
-export type { TabItem, TabVariant, KTabsProps } from './form/k-tabs';
-export type { SheetProps } from './form/k-sheet';
+export type { Option } from './form/multi-select/multi-select';
+export type { TabItem, TabVariant, TabsProps } from './form/tabs/tabs';
+export type { SheetProps } from './form/sheet/sheet';
