@@ -19,7 +19,7 @@ import {
   PopoverTrigger,
 } from '@/components/composed/popover';
 import { Separator } from '@/components/composed/separator';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui';
 
 interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>;

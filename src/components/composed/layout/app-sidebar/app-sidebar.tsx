@@ -8,7 +8,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+} from '@/components/ui';
 import {
   Sidebar,
   SidebarContent,
@@ -24,7 +24,7 @@ import {
   SidebarMenuSubItem,
   SidebarSeparator,
   useSidebar,
-} from '@/components/ui/sidebar';
+} from '@/components/ui';
 
 export interface NavItem {
   title: string;

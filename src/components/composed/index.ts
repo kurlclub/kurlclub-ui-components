@@ -28,3 +28,19 @@ export type { InputProps } from './form/input/input';
 export type { Option } from './form/multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './form/tabs/tabs';
 export type { SheetProps } from './form/sheet/sheet';
+
+export { InfoBadge } from './info-badge/info-badge';
+export { default as InfoCard } from './info-card/info-card';
+export { Spinner } from './spinner/spinner';
+export { InfoBanner } from './info-banner/info-banner';
+export { default as FileUploader } from './file-uploader/file-uploader';
+export { default as ProfileUploader } from './profile-uploader/profile-uploader';
+
+export {
+  DataTable,
+  DataTableToolbar,
+  DataTableFacetedFilter,
+  DataTableFooter,
+  DataTableViewOptions,
+} from './data-table';
+export type { FilterConfig } from './data-table';

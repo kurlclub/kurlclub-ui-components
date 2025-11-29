@@ -6,7 +6,7 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '@/components/ui/sheet';
+} from '@/components/ui';
 
 export interface SheetProps {
   title?: string;

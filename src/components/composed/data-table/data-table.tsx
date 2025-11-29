@@ -22,7 +22,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui';
 
 import { DataTableFooter } from './data-table-footer';
 

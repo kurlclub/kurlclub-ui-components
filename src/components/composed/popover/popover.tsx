@@ -6,7 +6,7 @@ import {
   Popover as BasePopover,
   PopoverContent as BasePopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 const Popover = BasePopover;

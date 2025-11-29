@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { Separator as BaseSeparator } from '@/components/ui/separator';
+import { Separator as BaseSeparator } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 const Separator = React.forwardRef<

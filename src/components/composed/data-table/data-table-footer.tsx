@@ -13,7 +13,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/components/ui';
 
 interface DataTableFooterProps<TData> {
   table: Table<TData>;

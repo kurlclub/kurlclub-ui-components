@@ -1,6 +1,6 @@
 import { forwardRef, useState } from 'react';
 
-import { Input as BaseInput } from '@/components/ui/input';
+import { Input as BaseInput } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export interface InputProps

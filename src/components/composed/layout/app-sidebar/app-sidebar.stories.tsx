@@ -11,11 +11,7 @@ import {
   Users,
 } from 'lucide-react';
 
-import {
-  SidebarInset,
-  SidebarProvider,
-  useSidebar,
-} from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider, useSidebar } from '@/components/ui';
 
 import { AppSidebar } from './app-sidebar';
 

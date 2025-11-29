@@ -9,7 +9,7 @@ import {
   CommandItem as BaseCommandItem,
   CommandList as BaseCommandList,
   CommandSeparator as BaseCommandSeparator,
-} from '@/components/ui/command';
+} from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 const Command = React.forwardRef<

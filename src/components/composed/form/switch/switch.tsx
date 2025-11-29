@@ -1,6 +1,6 @@
 'use client';
 
-import { Switch as BaseSwitch } from '@/components/ui/switch';
+import { Switch as BaseSwitch } from '@/components/ui';
 
 interface SwitchProps {
   label: string;

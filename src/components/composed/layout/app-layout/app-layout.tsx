@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export interface AppLayoutProps {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BarChart3, Calendar, CreditCard, Settings, Users } from 'lucide-react';
 
-import { useSidebar } from '@/components/ui/sidebar';
+import { useSidebar } from '@/components/ui';
 
 import { AppHeader } from '../app-header/app-header';
 import { AppSidebar } from '../app-sidebar/app-sidebar';
