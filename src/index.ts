@@ -22,11 +22,44 @@ export {
 } from './components/ui/sidebar';
 
 // Composed components (custom)
-export { Button } from './components/composed';
-export type { ButtonProps } from './components/composed';
+export { Button, Badge } from './components/composed';
+export type { ButtonProps, BadgeProps } from './components/composed';
 
-export { AppSidebar } from './components/composed';
-export type { AppSidebarProps, NavItem } from './components/composed';
+export { AppSidebar, AppLayout, AppHeader } from './components/composed';
+export type {
+  AppSidebarProps,
+  NavItem,
+  AppLayoutProps,
+  AppHeaderProps,
+} from './components/composed';
+
+// Form components
+export {
+  Input,
+  MultiSelect,
+  Password,
+  Select,
+  Sheet,
+  Switch,
+  Tabs,
+  Textarea,
+  EditableFormField,
+} from './components/composed';
+export type {
+  InputProps,
+  Option,
+  TabItem,
+  TabVariant,
+  TabsProps,
+  SheetProps,
+} from './components/composed';
 
 // Theme
 export { theme, themeNames, themePlugin } from './styles/theme';
+
+// Providers
+export { DialogProvider, useDialog } from './providers/dialog-provider';
+
+// Hooks
+export { useAppDialog } from './hooks/use-app-dialog';
+export { useIsMobile } from './hooks/use-mobile';
