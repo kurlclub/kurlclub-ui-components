@@ -43,10 +43,10 @@ export {
   Switch,
   Tabs,
   Textarea,
-  Dialog,
   EditableFormField,
 } from './components/composed';
 export type {
+  InputProps,
   Option,
   TabItem,
   TabVariant,
@@ -56,3 +56,10 @@ export type {
 
 // Theme
 export { theme, themeNames, themePlugin } from './styles/theme';
+
+// Providers
+export { DialogProvider, useDialog } from './providers/dialog-provider';
+
+// Hooks
+export { useAppDialog } from './hooks/use-app-dialog';
+export { useIsMobile } from './hooks/use-mobile';

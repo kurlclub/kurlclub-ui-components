@@ -11,16 +11,18 @@ interface PasswordProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Password = forwardRef<HTMLInputElement, PasswordProps>(
-  ({ className, label, onChange, ...props }, ref) => {
+  ({ className, label, onChange, value, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [hasContent, setHasContent] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const hasContent =
+      (typeof value === 'number' && !isNaN(value)) ||
+      (typeof value === 'string' && value.trim().length > 0);
 
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setHasContent(e.target.value.trim().length > 0);
       onChange?.(e);
     };
 
@@ -46,12 +48,13 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleChange}
+            value={value}
             aria-labelledby={`floating-label-${label.replace(/\s+/g, '-').toLowerCase()}`}
           />
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors cursor-pointer"
             aria-label={ariaLabel}
             tabIndex={-1}
           >

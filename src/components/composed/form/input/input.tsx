@@ -1,11 +1,9 @@
-'use client';
-
 import { forwardRef, useState } from 'react';
 
 import { Input as BaseInput } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
-interface InputProps
+export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label: string;
   className?: string;

@@ -6,7 +6,6 @@ export { Sheet } from './sheet/sheet';
 export { Switch } from './switch/switch';
 export { Tabs } from './tabs/tabs';
 export { Textarea } from './textarea/textarea';
-export { Dialog } from './dialog/dialog';
 export { EditableFormField } from './editable-field/editable-field';
 export type { Option } from './multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './tabs/tabs';

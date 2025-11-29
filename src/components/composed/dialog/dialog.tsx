@@ -32,7 +32,7 @@ const Dialog: React.FC<DialogProps> = ({
     <BaseDialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={`bg-primary-blue-500 border-secondary-blue-500 rounded-lg! max-w-full ${className}`}
+        className={`bg-primary-blue-500 border-secondary-blue-500 ${className}`}
       >
         {title && <DialogTitle>{title}</DialogTitle>}
         {children}
