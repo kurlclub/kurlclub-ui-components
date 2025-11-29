@@ -48,7 +48,7 @@ export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 
 export function AppSidebar({
   navItems,
-  header,
+  header = null,
   footer,
   groupLabel = 'GENERAL',
   onNavigate,
@@ -92,7 +92,7 @@ export function AppSidebar({
       className="**:data-[slot='sidebar-inner']:border-r-0!"
       {...props}
     >
-      {header && <SidebarHeader>{header}</SidebarHeader>}
+      <SidebarHeader>{header}</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>{groupLabel}</SidebarGroupLabel>

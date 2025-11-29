@@ -11,6 +11,7 @@ import {
   Users,
 } from 'lucide-react';
 
+import { TeamSwitcher } from '@/components/composed/team-switcher';
 import { SidebarInset, SidebarProvider, useSidebar } from '@/components/ui';
 
 import { AppSidebar } from './app-sidebar';
@@ -129,33 +130,12 @@ export const WithSubItems: Story = {
   },
 };
 
-const HeaderWithLogo = () => {
-  const { state } = useSidebar();
-  return (
-    <div className="p-3 flex items-center justify-center">
-      {state === 'collapsed' ? (
-        <img
-          src="/assets/svg/logo-icon.png"
-          alt="KurlClub"
-          className="w-9 h-9 shrink-0"
-        />
-      ) : (
-        <img
-          src="/assets/svg/logo-light.svg"
-          alt="KurlClub"
-          className="h-4 w-auto object-contain"
-        />
-      )}
-    </div>
-  );
-};
-
 export const WithHeader: Story = {
   args: {
     navItems,
     groupLabel: 'GENERAL',
-    currentPath: '/members',
-    header: <HeaderWithLogo />,
+    currentPath: '/dashboard',
+    header: <TeamSwitcher />,
   },
 };
 
@@ -209,23 +189,7 @@ const InteractiveComponent = () => {
         setCurrentPath(url);
         console.log('Navigating to:', url);
       }}
-      header={
-        <div className="p-3 flex items-center justify-center">
-          {state === 'collapsed' ? (
-            <img
-              src="/assets/svg/logo-icon.png"
-              alt="KurlClub"
-              className="w-9 h-9 shrink-0"
-            />
-          ) : (
-            <img
-              src="/assets/svg/logo-light.svg"
-              alt="KurlClub"
-              className="h-4 w-auto object-contain"
-            />
-          )}
-        </div>
-      }
+      header={<TeamSwitcher />}
       footer={
         state === 'collapsed' ? (
           <div className="p-3 flex items-center justify-center">

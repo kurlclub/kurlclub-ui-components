@@ -12,13 +12,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/composed/command';
+} from '@/components/composed/command/command';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/composed/popover';
-import { Separator } from '@/components/composed/separator';
+} from '@/components/composed/popover/popover';
+import { Separator } from '@/components/composed/separator/separator';
 import { Checkbox } from '@/components/ui';
 
 interface DataTableFacetedFilterProps<TData, TValue> {
