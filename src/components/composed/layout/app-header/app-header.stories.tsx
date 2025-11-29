@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui';
 
 import { AppSidebar } from '../app-sidebar/app-sidebar';
 import { AppHeader } from './app-header';

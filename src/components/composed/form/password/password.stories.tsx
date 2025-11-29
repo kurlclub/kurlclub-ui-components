@@ -11,51 +11,71 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    label: {
+      control: 'text',
+      description: 'Label for the password field',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disable the password field',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text',
+    },
+  },
 } satisfies Meta<typeof Password>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DefaultComponent = () => {
-  const [value, setValue] = useState('');
-  return (
-    <Password
-      label="Password"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-};
-
-const WithValueComponent = () => {
-  const [value, setValue] = useState('mypassword123');
-  return (
-    <Password
-      label="Current Password"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-};
-
 export const Default: Story = {
-  render: DefaultComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Password
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Password',
   },
 };
 
 export const WithValue: Story = {
-  render: WithValueComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Password
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Current Password',
+    value: 'mypassword123',
   },
 };
 
 export const Disabled: Story = {
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Password
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Password',
     disabled: true,
-    value: '',
   },
 };

@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { InputProps } from './input';
 import { Input } from './input';
 
 const meta = {
@@ -12,75 +11,129 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    label: {
+      control: 'text',
+      description: 'Label for the input field',
+    },
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'number', 'tel', 'url'],
+      description: 'Input type',
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'default'],
+      description: 'Size of the input field',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disable the input field',
+    },
+    mandetory: {
+      control: 'boolean',
+      description: 'Mark field as mandatory',
+    },
+    suffix: {
+      control: 'text',
+      description: 'Suffix text (e.g., cm, kg)',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text',
+    },
+  },
 } satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DefaultComponent = (args: InputProps) => {
-  const [value, setValue] = useState('');
-  return (
-    <Input {...args} value={value} onChange={(e) => setValue(e.target.value)} />
-  );
-};
-
-const WithSuffixComponent = (args: InputProps) => {
-  const [value, setValue] = useState('');
-  return (
-    <Input {...args} value={value} onChange={(e) => setValue(e.target.value)} />
-  );
-};
-
-const MandatoryComponent = (args: InputProps) => {
-  const [value, setValue] = useState('');
-  return (
-    <Input {...args} value={value} onChange={(e) => setValue(e.target.value)} />
-  );
-};
-
-const SmallComponent = (args: InputProps) => {
-  const [value, setValue] = useState('');
-  return (
-    <Input {...args} value={value} onChange={(e) => setValue(e.target.value)} />
-  );
-};
-
 export const Default: Story = {
-  render: DefaultComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
-    label: 'Email Address',
-    type: 'email',
+    label: 'Full Name',
+    type: 'text',
+    placeholder: 'Enter your Full Name',
   },
 };
 
 export const WithSuffix: Story = {
-  render: WithSuffixComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Height',
     type: 'number',
     suffix: 'cm',
+    placeholder: 'Enter height',
   },
 };
 
 export const Mandatory: Story = {
-  render: MandatoryComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Full Name',
     mandetory: true,
     type: 'text',
+    placeholder: 'Enter your name',
   },
 };
 
 export const Small: Story = {
-  render: SmallComponent,
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Phone',
     type: 'tel',
     size: 'sm',
+    placeholder: 'Enter phone number',
   },
 };
 
 export const Disabled: Story = {
+  render: function Component(args) {
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
   args: {
     label: 'Username',
     type: 'text',

@@ -2,12 +2,11 @@ import * as React from 'react';
 
 import { Loader2 } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
-
 import {
   Button as ShadcnButton,
   type ButtonProps as ShadcnButtonProps,
-} from '../../ui/button';
+} from '@/components/ui';
+import { cn } from '@/lib/utils';
 
 const variantStyles = {
   default:

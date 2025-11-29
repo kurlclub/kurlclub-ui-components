@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import { Separator } from '@/components/ui/separator';
-import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
+import { Separator } from '@/components/ui';
+import { SidebarTrigger, useSidebar } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export interface AppHeaderProps extends React.ComponentProps<'header'> {

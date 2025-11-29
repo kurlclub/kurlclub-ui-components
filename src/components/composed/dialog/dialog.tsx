@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '@/components/ui';
 
 interface DialogProps {
   title?: string;

@@ -11,12 +11,8 @@ import {
   CommandGroup,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+} from '@/components/ui';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export type Option = {
