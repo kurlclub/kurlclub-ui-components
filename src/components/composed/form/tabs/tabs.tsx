@@ -48,7 +48,7 @@ export function Tabs({
                 className={cn(
                   'relative flex items-center gap-2.5 px-4 md:px-8 py-2.5 h-10 text-[15px] leading-normal transition-colors hover:bg-secondary-blue-500 cursor-pointer',
                   {
-                    'bg-secondary-blue-500 text-white before:absolute before:left-0 before:top-0 before:h-full before:w-[2px] before:bg-primary-green-100':
+                    'bg-secondary-blue-500 text-white before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-primary-green-100':
                       isActive,
                     'text-white': !isActive,
                   }
@@ -73,13 +73,14 @@ export function Tabs({
       ) : (
         <nav className="px-2 flex w-full overflow-x-auto gap-4 md:gap-6">
           {items.map((item) => {
+            const Icon = item.icon;
             const isActive = value === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => onTabChange?.(item.id)}
                 className={cn(
-                  'flex-shrink-0 border-b-2 text-nowrap leading-normal h-7 pb-3 k-transition text-center text-sm md:text-[15px] font-normal transition-all cursor-pointer min-w-fit px-1',
+                  'shrink-0 flex items-center gap-2 border-b-2 text-nowrap leading-normal h-7 pb-3 k-transition text-center text-sm md:text-[15px] font-normal transition-all cursor-pointer min-w-fit px-1',
                   {
                     'border-primary-green-200 text-primary-green-200': isActive,
                     'border-transparent text-white hover:text-primary-green-200':
@@ -87,6 +88,7 @@ export function Tabs({
                   }
                 )}
               >
+                {Icon && <Icon className="h-4 w-4" />}
                 {item.label}
               </button>
             );

@@ -1,19 +1,32 @@
+import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
 import { Home, Settings, User } from 'lucide-react';
 
 import { Tabs } from './tabs';
 
 const meta = {
-  title: 'Components/Form/Tabs',
+  title: 'Form/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof KTabs>;
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['vertical', 'underline'],
+      description: 'Tab variant style',
+    },
+    items: {
+      control: 'object',
+      description: 'Array of tab items',
+    },
+  },
+} satisfies Meta<typeof Tabs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Tabs>;
 
 const tabItems = [
   { id: 'home', label: 'Home', icon: Home },
@@ -22,22 +35,29 @@ const tabItems = [
 ];
 
 export const Vertical: Story = {
+  render: function Component(args) {
+    const [value, setValue] = useState('home');
+    return (
+      <div className="w-[500px]">
+        <Tabs {...args} value={value} onTabChange={setValue} />
+      </div>
+    );
+  },
   args: {
     items: tabItems,
     variant: 'vertical',
-    value: 'home',
   },
 };
 
 export const Underline: Story = {
-  args: {
-    items: tabItems,
-    variant: 'underline',
-    value: 'profile',
+  render: function Component(args) {
+    const [value, setValue] = useState('overview');
+    return (
+      <div className="w-[500px]">
+        <Tabs {...args} value={value} onTabChange={setValue} />
+      </div>
+    );
   },
-};
-
-export const WithoutIcons: Story = {
   args: {
     items: [
       { id: 'overview', label: 'Overview' },
@@ -45,6 +65,20 @@ export const WithoutIcons: Story = {
       { id: 'reports', label: 'Reports' },
     ],
     variant: 'underline',
-    value: 'overview',
+  },
+};
+
+export const UnderlineWithIcons: Story = {
+  render: function Component(args) {
+    const [value, setValue] = useState('profile');
+    return (
+      <div className="w-[500px]">
+        <Tabs {...args} value={value} onTabChange={setValue} />
+      </div>
+    );
+  },
+  args: {
+    items: tabItems,
+    variant: 'underline',
   },
 };

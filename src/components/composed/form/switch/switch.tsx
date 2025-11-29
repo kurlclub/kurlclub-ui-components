@@ -21,6 +21,7 @@ export function Switch({
         id={label}
         checked={checked}
         onCheckedChange={onCheckedChange}
+        className="data-[state=checked]:bg-primary-green-300 data-[state=unchecked]:bg-secondary-blue-400 shadow-xs focus-visible:outline-hidden [&>span]:data-[state=checked]:bg-secondary-blue-500 [&>span]:data-[state=unchecked]:bg-white"
       />
       {label && (
         <label
