@@ -35,6 +35,14 @@ export { Spinner } from './spinner/spinner';
 export { InfoBanner } from './info-banner/info-banner';
 export { default as FileUploader } from './file-uploader/file-uploader';
 export { default as ProfileUploader } from './profile-uploader/profile-uploader';
+export { Search } from './search/search';
+export { Breadcrumbs } from './breadcrumbs';
+export type { BreadcrumbItemType, BreadcrumbsProps } from './breadcrumbs';
+export { CollapsibleSection } from './collapsible-section';
+export type { CollapsibleSectionProps } from './collapsible-section';
+export * from './dropdown';
+export { Separator } from './separator';
+export { AppLoader } from './app-loader';
 
 export {
   DataTable,

@@ -2,19 +2,17 @@
 
 import * as React from 'react';
 
-import { Separator as BaseSeparator } from '@/components/ui';
+import { Separator as SeparatorPrimitive } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-const Separator = React.forwardRef<
-  React.ElementRef<typeof BaseSeparator>,
-  React.ComponentPropsWithoutRef<typeof BaseSeparator>
+export const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive>
 >(({ className, ...props }, ref) => (
-  <BaseSeparator
+  <SeparatorPrimitive
     ref={ref}
     className={cn('bg-primary-blue-400', className)}
     {...props}
   />
 ));
 Separator.displayName = 'Separator';
-
-export { Separator };

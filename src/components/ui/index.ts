@@ -1,6 +1,15 @@
 export { Avatar, AvatarImage, AvatarFallback } from './avatar';
 export { Badge, badgeVariants } from './badge';
 export type { BadgeProps } from './badge';
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from './breadcrumb';
 export { Button, buttonVariants } from './button';
 export type { ButtonProps } from './button';
 export { Checkbox } from './checkbox';
