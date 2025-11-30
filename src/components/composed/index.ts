@@ -23,11 +23,21 @@ export {
   Tabs,
   Textarea,
   EditableFormField,
+  DatePicker,
+  DateRangePicker,
+  DateOfBirthPicker,
+  NaturalLanguageDatePicker,
 } from './form';
 export type { InputProps } from './form/input/input';
 export type { Option } from './form/multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './form/tabs/tabs';
 export type { SheetProps } from './form/sheet/sheet';
+export type {
+  DatePickerProps,
+  DateRangePickerProps,
+  DateOfBirthPickerProps,
+  NaturalLanguageDatePickerProps,
+} from './form';
 
 export { InfoBadge } from './info-badge/info-badge';
 export { default as InfoCard } from './info-card/info-card';

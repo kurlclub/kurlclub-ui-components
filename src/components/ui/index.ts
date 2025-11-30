@@ -12,6 +12,7 @@ export {
 } from './breadcrumb';
 export { Button, buttonVariants } from './button';
 export type { ButtonProps } from './button';
+export { Calendar, CalendarDayButton } from './calendar';
 export { Checkbox } from './checkbox';
 export {
   Collapsible,
