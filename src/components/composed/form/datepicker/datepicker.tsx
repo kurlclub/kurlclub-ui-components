@@ -128,26 +128,6 @@ export function KDatePicker({
     }
   };
 
-  const renderLabel = () => {
-    if (mode === 'range') {
-      return rangeDate?.from ? (
-        rangeDate.to ? (
-          `${format(rangeDate.from, 'LLL dd, y')} - ${format(rangeDate.to, 'LLL dd, y')}`
-        ) : (
-          format(rangeDate.from, 'LLL dd, y')
-        )
-      ) : (
-        <span>{label}</span>
-      );
-    } else {
-      return singleDate ? (
-        format(singleDate, 'LLL dd, y')
-      ) : (
-        <span>{label}</span>
-      );
-    }
-  };
-
   const renderCalendar = () => {
     const commonProps = {
       initialFocus: true,
@@ -283,26 +263,55 @@ export function KDatePicker({
   }
 
   return (
-    <div className={cn('grid gap-2')}>
+    <div className="relative">
       <Popover
         open={isPopoverOpen}
         onOpenChange={(open) => {
-          if (!open) handleCancel();
+          if (!open) {
+            handleCancel();
+            setIsFocused(false);
+          }
           setIsPopoverOpen(open);
         }}
       >
         <PopoverTrigger asChild>
-          <Button
-            id="date"
-            variant="outline"
-            aria-label="Open date picker"
-            className={`justify-start text-left px-3 py-2 font-semibold text-sm w-fit ${className ? className : ''}`}
+          <button
+            type="button"
+            className={cn(
+              'k-input bg-secondary-blue-500 flex items-center w-full text-left relative px-4 h-[52px] pb-2.5 pt-3.5',
+              className
+            )}
             onClick={() => setIsPopoverOpen(true)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => !isPopoverOpen && setIsFocused(false)}
           >
-            {icon}
-            {renderLabel()}
-          </Button>
+            <span
+              className={cn(
+                'flex-1',
+                hasValue ? 'text-white mt-2' : 'text-transparent'
+              )}
+            >
+              {mode === 'single' && singleDate
+                ? format(singleDate, 'dd/MM/yyyy')
+                : mode === 'range' && rangeDate?.from
+                  ? rangeDate.to
+                    ? `${format(rangeDate.from, 'dd/MM/yyyy')} - ${format(rangeDate.to, 'dd/MM/yyyy')}`
+                    : format(rangeDate.from, 'dd/MM/yyyy')
+                  : 'Select date'}
+            </span>
+            <div className="flex items-center">{icon}</div>
+          </button>
         </PopoverTrigger>
+        <label
+          className={cn(
+            'text-sm text-primary-blue-100 absolute left-4 transition-all duration-200 pointer-events-none',
+            isFocused || hasValue
+              ? 'top-1.5 text-xs'
+              : 'top-3.5 text-sm scale-100'
+          )}
+        >
+          {label}
+        </label>
         <PopoverContent
           className="flex w-auto overflow-hidden rounded-xl border border-primary-blue-400 bg-secondary-blue-800 p-0 pointer-events-auto"
           align="start"

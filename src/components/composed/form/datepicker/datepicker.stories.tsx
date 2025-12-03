@@ -52,12 +52,14 @@ type Story = StoryObj<typeof KDatePicker>;
 function SingleDateComponent(args: React.ComponentProps<typeof KDatePicker>) {
   const [date, setDate] = React.useState<Date | undefined>();
   return (
-    <KDatePicker
-      {...args}
-      value={date}
-      onDateChange={(value) => setDate(value as Date | undefined)}
-      label="Select Date"
-    />
+    <div className="w-80">
+      <KDatePicker
+        {...args}
+        value={date}
+        onDateChange={(value) => setDate(value as Date | undefined)}
+        label="Select Date"
+      />
+    </div>
   );
 }
 
@@ -67,14 +69,16 @@ function DateRangeComponent(args: React.ComponentProps<typeof KDatePicker>) {
     to?: Date | undefined;
   }>();
   return (
-    <KDatePicker
-      {...args}
-      value={range}
-      onDateChange={(value) =>
-        setRange(value as { from: Date | undefined; to?: Date | undefined })
-      }
-      label="Select Date Range"
-    />
+    <div className="w-80">
+      <KDatePicker
+        {...args}
+        value={range}
+        onDateChange={(value) =>
+          setRange(value as { from: Date | undefined; to?: Date | undefined })
+        }
+        label="Select Date Range"
+      />
+    </div>
   );
 }
 
