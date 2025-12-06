@@ -1,3 +1,6 @@
+// Import styles
+import './index.css';
+
 // Base UI components (shadcn)
 export { buttonVariants } from './components/ui/button';
 export type { ButtonProps as ShadcnButtonProps } from './components/ui/button';
