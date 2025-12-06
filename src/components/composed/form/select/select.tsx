@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import {
@@ -13,15 +15,15 @@ interface Option {
   value: string;
 }
 
-export const Select = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof BaseSelect> & {
-    label?: string;
-    options?: Option[];
-    className?: string;
-    size?: 'sm' | 'default';
-  }
->(
+interface SelectProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof BaseSelect>, 'ref'> {
+  label?: string;
+  options?: Option[];
+  className?: string;
+  size?: 'sm' | 'default';
+}
+
+export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (
     {
       label,

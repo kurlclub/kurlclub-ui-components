@@ -320,12 +320,12 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --background: 217 19% 10%;
+    --foreground: 0 0% 100%;
+    --card: 217 19% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 217 19% 10%;
+    --popover-foreground: 0 0% 100%;
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
@@ -384,11 +384,91 @@
 /* =====  DATE_PICKER OVERRIDES */
 .selected-date {
   background-color: #d3f702;
-  color: #000;
+  color: #11141c;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Calendar day button overrides */
+.rdp-day_button:hover {
+  background-color: #d3f702 !important;
+  color: #11141c !important;
+  outline: none !important;
+}
+
+.rdp-day_button[data-selected-single='true'] {
+  background-color: #d3f702 !important;
+  color: #11141c !important;
+  outline: none !important;
+}
+
+.rdp-day_button[data-range-start='true'],
+.rdp-day_button[data-range-end='true'] {
+  background-color: #d3f702 !important;
+  color: #11141c !important;
+  border-radius: 8px !important;
+  outline: none !important;
+}
+
+.rdp-day_button[data-range-middle='true'] {
+  background-color: #282b32 !important;
+  color: #eaeaeb !important;
+  border-radius: 0 !important;
+  outline: none !important;
+}
+
+.rdp-day[data-today='true'] .rdp-day_button {
+  color: #ebfb8b;
+  border: 1px solid #d3f702 !important;
+  border-radius: 8px !important;
+  outline: none !important;
+}
+
+.rdp-day[data-today='true'] .rdp-day_button[data-selected-single='true'],
+.rdp-day[data-today='true'] .rdp-day_button[data-range-start='true'],
+.rdp-day[data-today='true'] .rdp-day_button[data-range-end='true'] {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Month - Year dropdown */
+.rdp-dropdown {
+  background-color: #16181c;
+  color: white;
+  border-radius: 6px;
+  padding: 4px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.rdp-dropdown option {
+  background-color: #16181c;
+  color: white;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+}
+.rdp-dropdown option:hover {
+  background-color: red;
+}
+
+/* Selected value */
+.rdp-dropdown option:checked {
+  background-color: #d3f702;
+  color: #0d1117;
+}
+
+/* Focused option */
+.rdp-dropdown:focus option:checked {
+  outline: none;
+}
+
+/* Active state (when clicking) */
+.rdp-dropdown option:active {
+  background-color: #2a2d33;
 }
 
 /* ===== TIPTAP RICH-TEXT-EDITOR ===== */

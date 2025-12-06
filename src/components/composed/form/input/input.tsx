@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useState } from 'react';
 
 import { Input as BaseInput } from '@/components/ui';

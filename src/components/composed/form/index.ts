@@ -7,6 +7,7 @@ export { Switch } from './switch/switch';
 export { Tabs } from './tabs/tabs';
 export { Textarea } from './textarea/textarea';
 export { EditableFormField } from './editable-field/editable-field';
+export { KDatePicker } from './datepicker';
 export type { Option } from './multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './tabs/tabs';
 export type { SheetProps } from './sheet/sheet';

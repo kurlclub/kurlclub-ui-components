@@ -23,6 +23,7 @@ export {
   Tabs,
   Textarea,
   EditableFormField,
+  KDatePicker,
 } from './form';
 export type { InputProps } from './form/input/input';
 export type { Option } from './form/multi-select/multi-select';
