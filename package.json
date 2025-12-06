@@ -1,7 +1,7 @@
 {
   "name": "@kurlclub/ui-components",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -19,7 +19,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./tailwind": "./tailwind.config.ts"
   },
   "sideEffects": [
     "*.css"

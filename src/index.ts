@@ -28,12 +28,18 @@ export {
 export { Button, Badge } from './components/composed';
 export type { ButtonProps, BadgeProps } from './components/composed';
 
-export { AppSidebar, AppLayout, AppHeader } from './components/composed';
+export {
+  AppSidebar,
+  AppLayout,
+  AppHeader,
+  TeamSwitcher,
+} from './components/composed';
 export type {
   AppSidebarProps,
   NavItem,
   AppLayoutProps,
   AppHeaderProps,
+  TeamSwitcherProps,
 } from './components/composed';
 
 // Form components
