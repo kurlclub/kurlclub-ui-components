@@ -1,7 +1,7 @@
 {
   "name": "@kurlclub/ui-components",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -20,15 +20,17 @@
       "require": "./dist/index.js"
     },
     "./style.css": "./dist/style.css",
-    "./tailwind": "./tailwind.config.ts"
+    "./tailwind.config": "./tailwind.config.ts",
+    "./css": "./src/index.css"
   },
   "sideEffects": [
     "*.css"
   ],
   "files": [
     "dist",
-    "README.md",
-    ".vscode"
+    "src/index.css",
+    "tailwind.config.ts",
+    "README.md"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
