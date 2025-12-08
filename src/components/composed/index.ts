@@ -1,5 +1,5 @@
 // Export composed components here
-export { Button } from './button/button';
+export { Button, buttonVariants } from './button/button';
 export type { ButtonProps } from './button/button';
 
 export { Badge } from './badge/badge';

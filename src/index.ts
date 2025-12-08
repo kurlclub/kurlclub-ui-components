@@ -2,7 +2,7 @@
 import './index.css';
 
 // Base UI components (shadcn)
-export { buttonVariants } from './components/ui/button';
+export { buttonVariants as shadcnButtonVariants } from './components/ui/button';
 export type { ButtonProps as ShadcnButtonProps } from './components/ui/button';
 
 export {
@@ -25,7 +25,11 @@ export {
 } from './components/ui/sidebar';
 
 // Composed components (custom)
-export { Button, Badge } from './components/composed';
+export {
+  Button,
+  Badge,
+  buttonVariants as composedButtonVariants,
+} from './components/composed';
 export type { ButtonProps, BadgeProps } from './components/composed';
 
 export {
@@ -72,3 +76,22 @@ export { DialogProvider, useDialog } from './providers/dialog-provider';
 // Hooks
 export { useAppDialog } from './hooks/use-app-dialog';
 export { useIsMobile } from './hooks/use-mobile';
+
+// Utils
+export { getAvatarColor, getInitials } from './lib/avatar-utils';
+export {
+  cn,
+  calculateDateRange,
+  formatDayWithLeadingZero,
+  formatFieldName,
+  searchItems,
+  getGreeting,
+  base64ToFile,
+  getProfilePictureSrc,
+  safeParseDate,
+  safeFormatDate,
+  formatDateTime,
+  calculateAge,
+  calculateDaysRemaining,
+  formatAmount,
+} from './lib/utils';

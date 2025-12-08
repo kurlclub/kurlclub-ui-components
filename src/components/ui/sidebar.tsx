@@ -6,7 +6,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/composed/button/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import {

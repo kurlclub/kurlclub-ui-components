@@ -56,3 +56,146 @@ export const formatDayWithLeadingZero = (day: Date): string => {
   const dayNumber = day.getDate();
   return dayNumber.toString().padStart(2, '0');
 };
+
+export const formatFieldName = (field: string): string => {
+  return field
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/([a-z])([0-9])/g, '$1 $2')
+    .replace(/^[a-z]/, (char) => char.toUpperCase());
+};
+
+export function searchItems<T extends Record<string, unknown>>(
+  items: T[],
+  term: string,
+  getSearchableValues?: (item: T) => string[]
+): T[] {
+  if (!term.trim()) return items;
+  return items.filter((item) => {
+    const searchableValues = getSearchableValues
+      ? getSearchableValues(item)
+      : (Object.values(item).filter(
+          (value) => typeof value === 'string'
+        ) as string[]);
+    return searchableValues.some((value) =>
+      value.toLowerCase().includes(term.toLowerCase())
+    );
+  });
+}
+
+export const getGreeting = (): string => {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 12) return 'Good morning 💪🏼';
+  if (hour >= 12 && hour < 17) return 'Good afternoon ☀️';
+  if (hour >= 17 && hour < 21) return 'Good evening 🌙';
+  return 'Good night 💤';
+};
+
+export function base64ToFile(base64String: string, fileName: string): File {
+  const byteCharacters = atob(base64String);
+  const byteNumbers = new Array(byteCharacters.length);
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  const byteArray = new Uint8Array(byteNumbers);
+  const blob = new Blob([byteArray], { type: 'image/png' });
+  return new File([blob], fileName, { type: 'image/png' });
+}
+
+export const getProfilePictureSrc = (
+  profilePicture?: string | File | null,
+  photoPath?: string | null
+) => {
+  const source = profilePicture || photoPath;
+  if (!source) return undefined;
+  if (typeof source === 'string') {
+    if (source.startsWith('http') || source.startsWith('data:image')) {
+      return source;
+    }
+    return `data:image/png;base64,${source}`;
+  }
+  return URL.createObjectURL(source);
+};
+
+export const safeParseDate = (
+  dateValue: string | null | undefined
+): Date | undefined => {
+  if (!dateValue) return undefined;
+  try {
+    const date = new Date(dateValue);
+    return !isNaN(date.getTime()) ? date : undefined;
+  } catch {
+    return undefined;
+  }
+};
+
+export const safeFormatDate = (
+  dateValue: string | null | undefined,
+  locale: string = 'en-GB',
+  fallback: string = 'N/A'
+): string => {
+  const date = safeParseDate(dateValue);
+  return date ? new Intl.DateTimeFormat(locale).format(date) : fallback;
+};
+
+export const formatDateTime = (
+  isoString: string,
+  format: 'date' | 'time' | 'both' = 'both'
+): string => {
+  try {
+    const date = new Date(isoString);
+    if (format === 'date') {
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      });
+    }
+    if (format === 'time') {
+      return date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      });
+    }
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+  } catch {
+    return isoString;
+  }
+};
+
+export const calculateAge = (dob: string): number => {
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+  return age;
+};
+
+export const calculateDaysRemaining = (targetDate: string): number => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const target = new Date(targetDate);
+  target.setHours(0, 0, 0, 0);
+  return Math.ceil(
+    (target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+  );
+};
+
+export const formatAmount = (amount: number): string => {
+  if (amount >= 100000) return `₹${(amount / 100000).toFixed(0)}L`;
+  if (amount >= 1000) return `₹${(amount / 1000).toFixed(0)}K`;
+  return `₹${amount}`;
+};

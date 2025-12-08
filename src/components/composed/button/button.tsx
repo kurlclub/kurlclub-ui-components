@@ -8,7 +8,7 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-const variantStyles = {
+export const buttonVariants = {
   default:
     'bg-primary-green-500 text-primary-blue-500 shadow-sm hover:bg-primary-green-700',
   destructive:
@@ -26,7 +26,7 @@ const variantStyles = {
 export interface ButtonProps extends Omit<ShadcnButtonProps, 'variant'> {
   loading?: boolean;
   loadingText?: string;
-  variant?: keyof typeof variantStyles;
+  variant?: keyof typeof buttonVariants;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -45,7 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <ShadcnButton
         ref={ref}
-        className={cn(variantStyles[variant], className)}
+        className={cn(buttonVariants[variant], className)}
         disabled={disabled || loading}
         variant={undefined}
         aria-busy={loading}

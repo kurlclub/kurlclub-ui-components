@@ -16,7 +16,7 @@ export function AppHeader({ children, className, ...props }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        `flex h-16 shrink-0 items-center  gap-3 sticky top-3 z-50 border-b border-b-secondary-blue-500 px-4 bg-background-dark ${!isMobile ? 'rounded-tl-3xl' : ''}`,
+        `flex h-16 shrink-0 items-center gap-3 sticky top-3 z-50 border-b border-b-secondary-blue-500 px-4 bg-background-dark ${!isMobile ? 'rounded-tl-3xl' : ''}`,
         className
       )}
       {...props}
