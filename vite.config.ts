@@ -38,10 +38,14 @@ export default defineConfig(({ mode }) => ({
     mode === 'lib'
       ? {
           lib: {
-            entry: path.resolve(dirname, 'src/index.ts'),
+            entry: {
+              index: path.resolve(dirname, 'src/index.ts'),
+              theme: path.resolve(dirname, 'src/theme.ts'),
+            },
             name: 'KurlClubUI',
             formats: ['es', 'cjs'],
-            fileName: (format) => `index.${format === 'es' ? 'es.js' : 'js'}`,
+            fileName: (format, entryName) =>
+              `${entryName}.${format === 'es' ? 'es.js' : 'cjs.js'}`,
           },
           cssCodeSplit: false,
           rollupOptions: {

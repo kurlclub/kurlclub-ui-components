@@ -8,15 +8,15 @@ import {
 } from '@/components/ui';
 
 export interface TeamSwitcherProps {
-  collapsedLogo?: string;
-  expandedLogo?: string;
+  collapsedLogo: string;
+  expandedLogo: string;
   alt?: string;
 }
 
 export function TeamSwitcher({
-  collapsedLogo = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%203-1bUu3foSGcahraLSyANoyl4dlcVN2Z.png',
-  expandedLogo = '/assets/svg/logo-light.svg',
-  alt = 'KurlClub Logo',
+  collapsedLogo,
+  expandedLogo,
+  alt = 'Logo',
 }: TeamSwitcherProps) {
   const { state } = useSidebar();
 
