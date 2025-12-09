@@ -28,9 +28,22 @@ export {
 export {
   Button,
   Badge,
+  InfoCard,
+  InfoBadge,
+  InfoBanner,
+  Spinner,
+  Breadcrumbs,
+  CollapsibleSection,
+  Separator,
+  Search,
+  SocialLinkInput,
+  RichTextEditor,
+  FileUploader,
+  ProfileUploader,
+  AppLoader,
   buttonVariants as composedButtonVariants,
 } from './components/composed';
-export type { ButtonProps, BadgeProps } from './components/composed';
+export type { ButtonProps, BadgeProps, BreadcrumbItemType, BreadcrumbsProps, CollapsibleSectionProps, RichTextEditorProps } from './components/composed';
 
 export {
   AppSidebar,
@@ -57,6 +70,7 @@ export {
   Tabs,
   Textarea,
   EditableFormField,
+  KDatePicker,
 } from './components/composed';
 export type {
   InputProps,
@@ -66,6 +80,16 @@ export type {
   TabsProps,
   SheetProps,
 } from './components/composed';
+
+// Data Table
+export {
+  DataTable,
+  DataTableToolbar,
+  DataTableFacetedFilter,
+  DataTableFooter,
+  DataTableViewOptions,
+} from './components/composed';
+export type { FilterConfig } from './components/composed';
 
 // Theme
 export { theme, themeNames, themePlugin } from './styles/theme';
