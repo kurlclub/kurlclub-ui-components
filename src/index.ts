@@ -43,7 +43,14 @@ export {
   AppLoader,
   buttonVariants as composedButtonVariants,
 } from './components/composed';
-export type { ButtonProps, BadgeProps, BreadcrumbItemType, BreadcrumbsProps, CollapsibleSectionProps, RichTextEditorProps } from './components/composed';
+export type {
+  ButtonProps,
+  BadgeProps,
+  BreadcrumbItemType,
+  BreadcrumbsProps,
+  CollapsibleSectionProps,
+  RichTextEditorProps,
+} from './components/composed';
 
 export {
   AppSidebar,

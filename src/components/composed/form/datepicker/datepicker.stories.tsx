@@ -43,6 +43,10 @@ const meta: Meta<typeof KDatePicker> = {
       control: 'boolean',
       description: 'Use floating label style',
     },
+    disabledDates: {
+      control: 'object',
+      description: 'Matcher to disable specific days',
+    },
   },
 };
 
@@ -142,6 +146,35 @@ function FloatingComponent(args: React.ComponentProps<typeof KDatePicker>) {
     </div>
   );
 }
+
+function WithDisabledDaysComponent(
+  args: React.ComponentProps<typeof KDatePicker>
+) {
+  const [date, setDate] = React.useState<Date | undefined>();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return (
+    <div className="w-80">
+      <KDatePicker
+        {...args}
+        value={date}
+        onDateChange={(value) => setDate(value as Date | undefined)}
+        label="Select Future Date"
+        disabledDates={(date) => date < today}
+      />
+    </div>
+  );
+}
+
+export const WithDisabledDays: Story = {
+  args: {
+    mode: 'single',
+    captionLayout: 'label',
+    floating: true,
+  },
+  render: WithDisabledDaysComponent,
+};
 
 export const FloatingLabel: Story = {
   args: {

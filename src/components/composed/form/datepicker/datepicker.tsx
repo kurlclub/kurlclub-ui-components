@@ -34,6 +34,7 @@ interface KDatePickerProps extends React.HTMLAttributes<HTMLDivElement> {
   mode?: 'range' | 'single';
   className?: string;
   icon?: React.ReactNode;
+  disabledDates?: (date: Date) => boolean;
 }
 
 export function KDatePicker({
@@ -63,6 +64,7 @@ export function KDatePicker({
   endYear = getYear(new Date()) + 100,
   mode = 'range',
   icon = <CalendarDays className="text-primary-green-100" />,
+  disabledDates,
 }: KDatePickerProps) {
   const [rangeDate, setRangeDate] = React.useState<DateRange | undefined>(
     mode === 'range' ? (value as DateRange) : undefined
@@ -141,6 +143,7 @@ export function KDatePicker({
       captionLayout: showYearSelector ? 'dropdown' : captionLayout,
       buttonVariant,
       showOutsideDays,
+      disabled: disabledDates,
     };
 
     if (mode === 'range') {
