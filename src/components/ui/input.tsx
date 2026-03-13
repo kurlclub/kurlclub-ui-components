@@ -2,7 +2,30 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
+interface InputProps extends React.ComponentProps<'input'> {
+  isLogin?: boolean;
+}
+
+function Input({ className, type, isLogin, ...props }: InputProps) {
+  if (isLogin) {
+    return (
+      <input
+        type={type}
+        data-slot="input"
+        className={cn(
+          'k-input bg-secondary-blue-500 h-[52px] px-4',
+          'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground',
+          'border-input w-full min-w-0 rounded-md border bg-transparent text-base shadow-xs transition-[color,box-shadow] outline-none',
+          'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+          'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+          'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+
   return (
     <input
       type={type}

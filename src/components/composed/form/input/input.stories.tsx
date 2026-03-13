@@ -4,6 +4,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Input } from './input';
 
+type Variant = 'default' | 'login';
+type StoryArgs = React.ComponentProps<typeof Input> & {
+  variant?: Variant;
+};
+
 const meta = {
   title: 'Form/Input',
   component: Input,
@@ -11,7 +16,15 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    variant: 'default',
+  },
   argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['default', 'login'],
+      description: 'Visual variant for the input',
+    },
     label: {
       control: 'text',
       description: 'Label for the input field',
@@ -42,18 +55,23 @@ const meta = {
       control: 'text',
       description: 'Placeholder text',
     },
+    isLogin: {
+      table: { disable: true },
+    },
   },
-} satisfies Meta<typeof Input>;
+} satisfies Meta<StoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
     const [value, setValue] = useState(args.value || '');
     return (
       <Input
-        {...args}
+        {...rest}
+        isLogin={variant === 'login'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -68,10 +86,12 @@ export const Default: Story = {
 
 export const WithSuffix: Story = {
   render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
     const [value, setValue] = useState(args.value || '');
     return (
       <Input
-        {...args}
+        {...rest}
+        isLogin={variant === 'login'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -87,10 +107,12 @@ export const WithSuffix: Story = {
 
 export const Mandatory: Story = {
   render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
     const [value, setValue] = useState(args.value || '');
     return (
       <Input
-        {...args}
+        {...rest}
+        isLogin={variant === 'login'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -106,10 +128,12 @@ export const Mandatory: Story = {
 
 export const Small: Story = {
   render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
     const [value, setValue] = useState(args.value || '');
     return (
       <Input
-        {...args}
+        {...rest}
+        isLogin={variant === 'login'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -125,10 +149,12 @@ export const Small: Story = {
 
 export const Disabled: Story = {
   render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
     const [value, setValue] = useState(args.value || '');
     return (
       <Input
-        {...args}
+        {...rest}
+        isLogin={variant === 'login'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -139,5 +165,25 @@ export const Disabled: Story = {
     type: 'text',
     disabled: true,
     value: 'johndoe',
+  },
+};
+
+export const Login: Story = {
+  render: function Component(args) {
+    const { variant = 'default', ...rest } = args;
+    const [value, setValue] = useState(args.value || '');
+    return (
+      <Input
+        {...rest}
+        isLogin={variant === 'login'}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
+  args: {
+    label: 'Email',
+    type: 'email',
+    variant: 'login',
   },
 };

@@ -8,12 +8,14 @@ import { cn } from '@/lib/utils';
 
 interface PasswordProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  isLogin?: boolean;
 }
 
 const Password = forwardRef<HTMLInputElement, PasswordProps>(
-  ({ className, label, onChange, value, ...props }, ref) => {
+  ({ className, label, onChange, value, isLogin = false, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const labelId = `floating-label-${label.replace(/\s+/g, '-').toLowerCase()}`;
 
     const hasContent =
       (typeof value === 'number' && !isNaN(value)) ||
@@ -34,6 +36,44 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
     const inputType = showPassword ? 'text' : 'password';
     const ariaLabel = showPassword ? 'Hide password' : 'Show password';
 
+    if (isLogin) {
+      return (
+        <div className="relative flex flex-col gap-1">
+          <label
+            id={labelId}
+            className="text-sm text-primary-blue-100 cursor-default"
+          >
+            {label}
+          </label>
+          <input
+            type={inputType}
+            className={cn(
+              'k-input px-4 h-[52px] bg-secondary-blue-500',
+              className
+            )}
+            ref={ref}
+            {...props}
+            onChange={handleChange}
+            value={value}
+            aria-labelledby={labelId}
+          />
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            className="absolute cursor-pointer right-3 top-[68%] -translate-y-1/2 p-1 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+            aria-label={ariaLabel}
+            tabIndex={-1}
+          >
+            {showPassword ? (
+              <EyeOff className="h-5 w-5 text-primary-blue-100" />
+            ) : (
+              <Eye className="h-5 w-5 text-primary-blue-100" />
+            )}
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="relative">
         <div className="relative">
@@ -49,7 +89,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             onBlur={handleBlur}
             onChange={handleChange}
             value={value}
-            aria-labelledby={`floating-label-${label.replace(/\s+/g, '-').toLowerCase()}`}
+            aria-labelledby={labelId}
           />
           <button
             type="button"
@@ -65,7 +105,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             )}
           </button>
           <label
-            id={`floating-label-${label.replace(/\s+/g, '-').toLowerCase()}`}
+            id={labelId}
             className={cn(
               'text-sm text-primary-blue-100 absolute left-4 transition-all duration-200 pointer-events-none',
               isFocused || hasContent ? 'top-2 text-xs' : 'top-4 text-sm'
