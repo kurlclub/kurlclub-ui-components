@@ -59,7 +59,23 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
 } from './dropdown-menu';
+export {
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+  useFormField,
+} from './form';
 export { Input } from './input';
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from './input-otp';
 export { Label } from './label';
 export { Popover, PopoverTrigger, PopoverContent } from './popover';
 export {

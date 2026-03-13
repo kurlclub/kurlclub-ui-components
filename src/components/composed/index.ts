@@ -24,6 +24,9 @@ export {
   Textarea,
   EditableFormField,
   KDatePicker,
+  KDateInput,
+  KFormField,
+  KFormFieldType,
 } from './form';
 export type { InputProps } from './form/input/input';
 export type { Option } from './form/multi-select/multi-select';

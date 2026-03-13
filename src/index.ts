@@ -23,6 +23,22 @@ export {
   SidebarTrigger,
   useSidebar,
 } from './components/ui/sidebar';
+export {
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+  useFormField,
+} from './components/ui/form';
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from './components/ui/input-otp';
 
 // Composed components (custom)
 export {
@@ -78,6 +94,9 @@ export {
   Textarea,
   EditableFormField,
   KDatePicker,
+  KDateInput,
+  KFormField,
+  KFormFieldType,
 } from './components/composed';
 export type {
   InputProps,
@@ -120,6 +139,7 @@ export {
   base64ToFile,
   getProfilePictureSrc,
   safeParseDate,
+  toUtcDateOnlyISOString,
   safeFormatDate,
   formatDateTime,
   calculateAge,

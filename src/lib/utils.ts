@@ -12,6 +12,10 @@ import {
 } from 'date-fns';
 import { twMerge } from 'tailwind-merge';
 
+const ISO_DATE_ONLY_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const ISO_DATETIME_PATTERN = /^\d{4}-\d{2}-\d{2}[T\s]\d{2}:\d{2}/;
+const ISO_TIMEZONE_PATTERN = /(Z|[+-]\d{2}:?\d{2})$/i;
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -117,15 +121,50 @@ export const getProfilePictureSrc = (
 };
 
 export const safeParseDate = (
-  dateValue: string | null | undefined
+  dateValue: string | number | Date | null | undefined
 ): Date | undefined => {
-  if (!dateValue) return undefined;
-  try {
+  if (dateValue === null || dateValue === undefined || dateValue === '') {
+    return undefined;
+  }
+
+  if (dateValue instanceof Date) {
+    return Number.isNaN(dateValue.getTime()) ? undefined : new Date(dateValue);
+  }
+
+  if (typeof dateValue === 'number') {
     const date = new Date(dateValue);
+    return Number.isNaN(date.getTime()) ? undefined : date;
+  }
+
+  try {
+    const normalizedValue = dateValue.trim();
+    if (!normalizedValue) return undefined;
+
+    const needsUtcSuffix =
+      ISO_DATETIME_PATTERN.test(normalizedValue) &&
+      !ISO_TIMEZONE_PATTERN.test(normalizedValue);
+    const normalizedIsoString = ISO_DATE_ONLY_PATTERN.test(normalizedValue)
+      ? `${normalizedValue}T00:00:00Z`
+      : needsUtcSuffix
+        ? `${normalizedValue.replace(' ', 'T')}Z`
+        : normalizedValue;
+
+    const date = new Date(normalizedIsoString);
     return !isNaN(date.getTime()) ? date : undefined;
   } catch {
     return undefined;
   }
+};
+
+export const toUtcDateOnlyISOString = (
+  dateValue: Date | string | null | undefined
+): string => {
+  const date = safeParseDate(dateValue);
+  if (!date) return '';
+
+  return new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+  ).toISOString();
 };
 
 export const safeFormatDate = (

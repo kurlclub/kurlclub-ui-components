@@ -8,6 +8,8 @@ export { Tabs } from './tabs/tabs';
 export { Textarea } from './textarea/textarea';
 export { EditableFormField } from './editable-field/editable-field';
 export { KDatePicker } from './datepicker';
+export { KDateInput } from './date-input';
+export { KFormField, KFormFieldType } from './k-formfield';
 export type { Option } from './multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './tabs/tabs';
 export type { SheetProps } from './sheet/sheet';
