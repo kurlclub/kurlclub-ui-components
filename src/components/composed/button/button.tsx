@@ -38,22 +38,62 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loadingText = 'Loading...',
       disabled,
       variant = 'default',
+      asChild = false,
       ...props
     },
     ref
   ) => {
+    const normalizedChildren = React.Children.toArray(children).filter(
+      (child) => {
+        if (
+          child === null ||
+          child === undefined ||
+          typeof child === 'boolean'
+        ) {
+          return false;
+        }
+
+        if (typeof child === 'string') {
+          return child.trim().length > 0;
+        }
+
+        return true;
+      }
+    );
+
+    const childElement =
+      asChild &&
+      normalizedChildren.length === 1 &&
+      React.isValidElement(normalizedChildren[0])
+        ? normalizedChildren[0]
+        : null;
+
+    const content = loading ? (
+      <>
+        <Loader2 className="animate-spin" />
+        {loadingText}
+      </>
+    ) : (
+      children
+    );
+
+    const renderedChild = childElement
+      ? loading
+        ? React.cloneElement(childElement, undefined, content)
+        : childElement
+      : content;
+
     return (
       <ShadcnButton
         ref={ref}
         className={cn(buttonVariants[variant], className)}
         disabled={disabled || loading}
-        variant={undefined}
         aria-busy={loading}
         aria-label={loading ? loadingText : undefined}
+        asChild={Boolean(childElement)}
         {...props}
       >
-        {loading && <Loader2 className="animate-spin" />}
-        {loading ? loadingText : children}
+        {renderedChild}
       </ShadcnButton>
     );
   }
