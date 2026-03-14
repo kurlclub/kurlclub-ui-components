@@ -11,7 +11,7 @@ export interface InputProps
   className?: string;
   suffix?: string;
   maxLength?: number;
-  mandetory?: boolean;
+  mandatory?: boolean;
   size?: 'sm' | 'default';
   isLogin?: boolean;
 }
@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     {
       className,
       label,
-      mandetory,
+      mandatory,
       type,
       suffix,
       maxLength,
@@ -56,7 +56,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className="text-sm text-primary-blue-100"
           >
             {label}
-            {mandetory && (
+            {mandatory && (
               <span className="text-alert-red-500 text-sm font-normal leading-normal ml-px">
                 *
               </span>
@@ -139,7 +139,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         >
           {label}
-          {mandetory && (
+          {mandatory && (
             <span className="text-alert-red-500 text-sm font-normal leading-normal ml-px">
               *
             </span>

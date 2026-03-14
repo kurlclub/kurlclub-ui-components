@@ -67,6 +67,8 @@ export type {
   BreadcrumbsProps,
   CollapsibleSectionProps,
   RichTextEditorProps,
+  RichTextToolbarAction,
+  RichTextToolbarPreset,
 } from './components/composed';
 
 export {

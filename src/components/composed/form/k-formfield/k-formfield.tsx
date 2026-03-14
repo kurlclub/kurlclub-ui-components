@@ -21,6 +21,11 @@ import { MultiSelect } from '@/components/composed/form/multi-select/multi-selec
 import { Password } from '@/components/composed/form/password/password';
 import { Select } from '@/components/composed/form/select/select';
 import { Textarea } from '@/components/composed/form/textarea/textarea';
+import {
+  RichTextEditor,
+  type RichTextToolbarAction,
+  type RichTextToolbarPreset,
+} from '@/components/composed/rich-text-editor/rich-text-editor';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   FormControl,
@@ -68,6 +73,7 @@ export enum KFormFieldType {
   DATE_INPUT = 'dateInput',
   SELECT = 'select',
   MULTISELECT = 'multiSelect',
+  RICH_TEXT_EDITOR = 'richTextEditor',
   OTP = 'otp',
   SKELETON = 'skeleton',
 }
@@ -89,9 +95,14 @@ interface CustomProps<T extends FieldValues> {
   showYearSelector?: boolean;
   children?: React.ReactNode;
   className?: string;
+  editorClassName?: string;
+  toolbarClassName?: string;
+  toolbarPreset?: RichTextToolbarPreset;
+  toolbarItems?: RichTextToolbarAction[];
+  showToolbar?: boolean;
   suffix?: string;
   maxLength?: number;
-  mandetory?: boolean;
+  mandatory?: boolean;
   options?: Option[];
   size?: 'sm' | 'default';
   renderSkeleton?: (
@@ -128,7 +139,7 @@ const RenderField = <T extends FieldValues>({
     className,
     suffix,
     maxLength,
-    mandetory,
+    mandatory,
     size,
     type,
   } = props;
@@ -153,7 +164,7 @@ const RenderField = <T extends FieldValues>({
                 className={className}
                 suffix={suffix}
                 maxLength={maxLength}
-                mandetory={mandetory}
+                mandatory={mandatory}
                 size={size}
                 type={type}
                 isLogin={props.isLogin}
@@ -173,6 +184,24 @@ const RenderField = <T extends FieldValues>({
             {...field}
             disabled={props.disabled}
             maxLength={maxLength}
+          />
+        </FormControl>
+      );
+
+    case KFormFieldType.RICH_TEXT_EDITOR:
+      return (
+        <FormControl>
+          <RichTextEditor
+            content={typeof field.value === 'string' ? field.value : ''}
+            onUpdate={field.onChange}
+            placeholder={placeholder}
+            toolbarPreset={props.toolbarPreset}
+            toolbarItems={props.toolbarItems}
+            showToolbar={props.showToolbar}
+            editable={!props.disabled}
+            className={className}
+            editorClassName={props.editorClassName}
+            toolbarClassName={props.toolbarClassName}
           />
         </FormControl>
       );

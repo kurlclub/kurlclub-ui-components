@@ -43,7 +43,7 @@ const meta = {
       control: 'boolean',
       description: 'Disable the input field',
     },
-    mandetory: {
+    mandatory: {
       control: 'boolean',
       description: 'Mark field as mandatory',
     },
@@ -120,7 +120,7 @@ export const Mandatory: Story = {
   },
   args: {
     label: 'Full Name',
-    mandetory: true,
+    mandatory: true,
     type: 'text',
     placeholder: 'Enter your name',
   },

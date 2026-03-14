@@ -484,6 +484,18 @@
   @apply bg-transparent p-0 text-white;
 }
 
+.prose code {
+  @apply rounded bg-secondary-blue-600 px-1.5 py-0.5 text-primary-green-200;
+}
+
+.prose blockquote {
+  @apply border-l-2 border-secondary-blue-400/70 pl-3 text-primary-blue-100 italic;
+}
+
+.prose hr {
+  @apply border-secondary-blue-400/60;
+}
+
 /* charts */
 /* .k-chart{
   max-height: 235px !important;

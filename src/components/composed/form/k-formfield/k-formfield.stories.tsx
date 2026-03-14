@@ -84,7 +84,7 @@ const meta = {
     disabled: {
       control: 'boolean',
     },
-    mandetory: {
+    mandatory: {
       control: 'boolean',
     },
   },

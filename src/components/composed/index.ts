@@ -60,7 +60,11 @@ export { TeamSwitcher } from './team-switcher/team-switcher';
 export type { TeamSwitcherProps } from './team-switcher/team-switcher';
 export { SocialLinkInput } from './social-link-input/social-link-input';
 export { RichTextEditor } from './rich-text-editor/rich-text-editor';
-export type { RichTextEditorProps } from './rich-text-editor/rich-text-editor';
+export type {
+  RichTextEditorProps,
+  RichTextToolbarAction,
+  RichTextToolbarPreset,
+} from './rich-text-editor/rich-text-editor';
 
 export {
   DataTable,
