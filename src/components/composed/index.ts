@@ -42,6 +42,7 @@ export { InfoBadge } from './info-badge/info-badge';
 export { default as InfoCard } from './info-card/info-card';
 export { Spinner } from './spinner/spinner';
 export { InfoBanner } from './info-banner/info-banner';
+export { BrandLogo } from './brand-logo/brand-logo';
 export { default as FileUploader } from './file-uploader';
 export { default as ProfileUploader } from './profile-uploader';
 export { Search } from './search/search';

@@ -47,6 +47,7 @@ export {
   InfoCard,
   InfoBadge,
   InfoBanner,
+  BrandLogo,
   Spinner,
   Breadcrumbs,
   CollapsibleSection,

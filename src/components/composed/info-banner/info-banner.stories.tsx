@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Sparkles } from 'lucide-react';
 
 import { InfoBanner } from './info-banner';
 
@@ -17,6 +18,9 @@ const meta = {
     showIcon: {
       control: 'boolean',
     },
+    showBrandLogo: {
+      control: 'boolean',
+    },
   },
 } satisfies Meta<typeof InfoBanner>;
 
@@ -33,7 +37,6 @@ export const Default: Story = {
 export const WithTitle: Story = {
   args: {
     variant: 'info',
-    title: 'Information:',
     message: 'This is an informational message with a title.',
   },
 };
@@ -41,7 +44,6 @@ export const WithTitle: Story = {
 export const Warning: Story = {
   args: {
     variant: 'warning',
-    title: 'Warning:',
     message: 'This action cannot be undone.',
   },
 };
@@ -49,7 +51,6 @@ export const Warning: Story = {
 export const Success: Story = {
   args: {
     variant: 'success',
-    title: 'Success:',
     message: 'Your changes have been saved successfully.',
   },
 };
@@ -57,7 +58,6 @@ export const Success: Story = {
 export const Error: Story = {
   args: {
     variant: 'error',
-    title: 'Error:',
     message: 'Something went wrong. Please try again.',
   },
 };
@@ -70,29 +70,29 @@ export const WithoutIcon: Story = {
   },
 };
 
+export const WithBrandLogo: Story = {
+  args: {
+    variant: 'info',
+    message: 'This is a message with the brand logo.',
+    showBrandLogo: true,
+  },
+};
+
+export const WithCustomIcon: Story = {
+  args: {
+    variant: 'success',
+    message: 'This banner uses a custom icon.',
+    icon: Sparkles,
+  },
+};
+
 export const AllVariants: Story = {
   render: () => (
     <div className="space-y-4">
-      <InfoBanner
-        variant="info"
-        title="Info:"
-        message="This is an informational message."
-      />
-      <InfoBanner
-        variant="warning"
-        title="Warning:"
-        message="This action cannot be undone."
-      />
-      <InfoBanner
-        variant="success"
-        title="Success:"
-        message="Your changes have been saved."
-      />
-      <InfoBanner
-        variant="error"
-        title="Error:"
-        message="Something went wrong."
-      />
+      <InfoBanner variant="info" message="This is an informational message." />
+      <InfoBanner variant="warning" message="This action cannot be undone." />
+      <InfoBanner variant="success" message="Your changes have been saved." />
+      <InfoBanner variant="error" message="Something went wrong." />
     </div>
   ),
 };
