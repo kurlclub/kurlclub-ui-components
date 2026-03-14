@@ -114,6 +114,69 @@ const navItemsWithSubItems = [
   },
 ];
 
+const navGroupsExample = [
+  {
+    label: 'MAIN',
+    items: [
+      {
+        title: 'Dashboard',
+        url: '/dashboard',
+        icon: BarChart3,
+      },
+      {
+        title: 'Members',
+        url: '/members',
+        icon: Users,
+      },
+    ],
+  },
+  {
+    label: 'MANAGEMENT',
+    items: [
+      {
+        title: 'Payments',
+        url: '#',
+        icon: CreditCard,
+        items: [
+          {
+            title: 'Recurring Payments',
+            url: '/payments',
+          },
+          {
+            title: 'Per Session Payments',
+            url: '/payments/session-payments',
+          },
+        ],
+      },
+      {
+        title: 'Attendance',
+        url: '/attendance',
+        icon: Calendar,
+      },
+      {
+        title: 'Plans & Workouts',
+        url: '/plans-and-workouts',
+        icon: Dumbbell,
+      },
+    ],
+  },
+  {
+    label: 'SETTINGS',
+    items: [
+      {
+        title: 'Staff Management',
+        url: '/staff-management',
+        icon: UserCheck,
+      },
+      {
+        title: 'General Settings',
+        url: '/general-settings',
+        icon: Settings,
+      },
+    ],
+  },
+];
+
 export const Default: Story = {
   args: {
     navItems,
@@ -176,14 +239,22 @@ export const WithFooter: Story = {
   },
 };
 
+export const WithGroups: Story = {
+  args: {
+    navGroups: navGroupsExample,
+    currentPath: '/dashboard',
+    header: <TeamSwitcher />,
+    footer: <FooterWithUser />,
+  },
+};
+
 const InteractiveComponent = () => {
   const [currentPath, setCurrentPath] = useState('/dashboard');
   const { state } = useSidebar();
 
   return (
     <AppSidebar
-      navItems={navItemsWithSubItems}
-      groupLabel="GENERAL"
+      navGroups={navGroupsExample}
       currentPath={currentPath}
       onNavigate={(url) => {
         setCurrentPath(url);
