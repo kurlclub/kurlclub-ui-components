@@ -27,6 +27,11 @@ export {
   KDateInput,
   KFormField,
   KFormFieldType,
+  FieldColumn,
+  FieldGrid,
+  FieldGridItem,
+  FieldRow,
+  FieldStack,
 } from './form';
 export type { InputProps } from './form/input/input';
 export type { Option } from './form/multi-select/multi-select';

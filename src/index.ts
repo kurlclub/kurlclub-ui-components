@@ -97,6 +97,11 @@ export {
   KDateInput,
   KFormField,
   KFormFieldType,
+  FieldColumn,
+  FieldGrid,
+  FieldGridItem,
+  FieldRow,
+  FieldStack,
 } from './components/composed';
 export type {
   InputProps,
