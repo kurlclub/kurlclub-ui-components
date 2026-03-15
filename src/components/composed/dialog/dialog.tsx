@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import {
-  Dialog as BaseDialog,
+  Dialog,
   DialogContent,
   DialogFooter,
   DialogTitle,
@@ -19,8 +19,9 @@ interface DialogProps {
   onOpenChange?: () => void;
 }
 
-const Dialog: React.FC<DialogProps> = ({
+const DialogComponent: React.FC<DialogProps> = ({
   title,
+  closable = true,
   trigger,
   children,
   className,
@@ -29,17 +30,24 @@ const Dialog: React.FC<DialogProps> = ({
   footer,
 }) => {
   return (
-    <BaseDialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={`bg-primary-blue-500 border-secondary-blue-500 ${className}`}
+        closable={closable}
+        className={`bg-primary-blue-500 border-secondary-blue-500 rounded-lg! max-w-full ${className}`}
       >
-        {title && <DialogTitle>{title}</DialogTitle>}
+        {title ? (
+          <DialogTitle>{title}</DialogTitle>
+        ) : (
+          <VisuallyHidden>
+            <DialogTitle>Dialog</DialogTitle>
+          </VisuallyHidden>
+        )}
         {children}
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>
-    </BaseDialog>
+    </Dialog>
   );
 };
 
-export { Dialog };
+export { DialogComponent as Dialog };
