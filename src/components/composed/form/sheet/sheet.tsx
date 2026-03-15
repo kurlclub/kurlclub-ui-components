@@ -37,6 +37,30 @@ export const Sheet = ({
   width = 'sm',
   onCloseBtnClick,
 }: SheetProps) => {
+  const handleOpenChange = React.useCallback(
+    (open: boolean) => {
+      if (open) {
+        onClose(open);
+        return;
+      }
+
+      setTimeout(() => {
+        if (typeof document === 'undefined') {
+          onClose(false);
+          return;
+        }
+
+        const openDialogs = document.querySelectorAll(
+          '[data-state="open"][role="dialog"]'
+        );
+
+        if (openDialogs.length > 1) return;
+
+        onClose(false);
+      }, 0);
+    },
+    [onClose]
+  );
   const isHorizontal = position === 'top' || position === 'bottom';
   const widthClass = isHorizontal
     ? 'w-full'
@@ -49,12 +73,12 @@ export const Sheet = ({
       }[width];
 
   return (
-    <BaseSheet open={isOpen} onOpenChange={onClose}>
+    <BaseSheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
         side={position}
         className={` bg-secondary-blue-700 border-primary-blue-400 border p-0 flex flex-col w-full ${widthClass} ${className || ''}`}
       >
-        <SheetHeader className="relative border-b border-primary-blue-400 px-5 py-[30px] bg-secondary-blue-700 h-[80px] flex-shrink-0">
+        <SheetHeader className="relative border-b border-primary-blue-400 px-5 py-[30px] bg-secondary-blue-700 h-20 shrink-0">
           <button
             onClick={() => {
               if (onCloseBtnClick) {
@@ -76,7 +100,7 @@ export const Sheet = ({
         </SheetHeader>
         <div className="px-5 pb-5 pt-2 flex-1 overflow-y-auto">{children}</div>
         {footer && (
-          <div className="flex h-[80px] justify-end bg-secondary-blue-700 px-3 py-4 border-t border-primary-blue-400 flex-shrink-0">
+          <div className="flex h-20 justify-end bg-secondary-blue-700 px-3 py-4 border-t border-primary-blue-400 shrink-0">
             {footer}
           </div>
         )}
