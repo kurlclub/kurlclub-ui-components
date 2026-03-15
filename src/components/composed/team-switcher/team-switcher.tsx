@@ -47,7 +47,7 @@ export function TeamSwitcher({
               className="w-auto object-contain h-4"
             />
           ) : (
-            <div className="h-4 w-28">
+            <div className="h-6 w-28">
               <BrandLogo variant={brandLogoVariant} />
             </div>
           )}
