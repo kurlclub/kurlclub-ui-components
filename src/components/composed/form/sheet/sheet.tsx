@@ -37,30 +37,6 @@ export const Sheet = ({
   width = 'sm',
   onCloseBtnClick,
 }: SheetProps) => {
-  const handleOpenChange = React.useCallback(
-    (open: boolean) => {
-      if (open) {
-        onClose(open);
-        return;
-      }
-
-      setTimeout(() => {
-        if (typeof document === 'undefined') {
-          onClose(false);
-          return;
-        }
-
-        const openDialogs = document.querySelectorAll(
-          '[data-state="open"][role="dialog"]'
-        );
-
-        if (openDialogs.length > 1) return;
-
-        onClose(false);
-      }, 0);
-    },
-    [onClose]
-  );
   const isHorizontal = position === 'top' || position === 'bottom';
   const widthClass = isHorizontal
     ? 'w-full'
@@ -73,7 +49,7 @@ export const Sheet = ({
       }[width];
 
   return (
-    <BaseSheet open={isOpen} onOpenChange={handleOpenChange}>
+    <BaseSheet open={isOpen} onOpenChange={onClose}>
       <SheetContent
         side={position}
         className={` bg-secondary-blue-700 border-primary-blue-400 border p-0 flex flex-col w-full ${widthClass} ${className || ''}`}

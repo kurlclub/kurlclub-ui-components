@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 import { type VariantProps, cva } from 'class-variance-authority';
-import * as SheetPrimitive from '@radix-ui/react-dialog';
+import { Dialog as SheetPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
@@ -53,132 +53,21 @@ interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
 
-type SheetInteractOutsideEvent = Parameters<
-  NonNullable<
-    React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onInteractOutside']
-  >
->[0];
-type SheetPointerDownOutsideEvent = Parameters<
-  NonNullable<
-    React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onPointerDownOutside']
-  >
->[0];
-type SheetFocusOutsideEvent = Parameters<
-  NonNullable<
-    React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onFocusOutside']
-  >
->[0];
-
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(
-  (
-    {
-      side = 'right',
-      className,
-      children,
-      onInteractOutside,
-      onFocusOutside,
-      onPointerDownOutside,
-      ...props
-    },
-    ref
-  ) => {
-    const contentRef = React.useRef<HTMLDivElement | null>(null);
-
-    const shouldPreventOutside = React.useCallback((event: Event) => {
-      const target =
-        event.target instanceof HTMLElement ? event.target : null;
-      const dialogAncestor = target?.closest?.('[role="dialog"]');
-
-      if (
-        dialogAncestor &&
-        contentRef.current &&
-        dialogAncestor !== contentRef.current
-      ) {
-        return true;
-      }
-
-      if (typeof document !== 'undefined') {
-        const openDialogs = document.querySelectorAll(
-          '[data-state="open"][role="dialog"]'
-        );
-        if (openDialogs.length > 1) {
-          return true;
-        }
-      }
-
-      return false;
-    }, []);
-
-    const handleInteractOutside: React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onInteractOutside'] = React.useCallback(
-      (event: SheetInteractOutsideEvent) => {
-        if (shouldPreventOutside(event)) {
-          event.preventDefault();
-        }
-        onInteractOutside?.(event);
-      },
-      [onInteractOutside, shouldPreventOutside]
-    );
-
-    const handlePointerDownOutside: React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onPointerDownOutside'] = React.useCallback(
-      (event: SheetPointerDownOutsideEvent) => {
-        if (shouldPreventOutside(event)) {
-          event.preventDefault();
-        }
-        onPointerDownOutside?.(event);
-      },
-      [onPointerDownOutside, shouldPreventOutside]
-    );
-
-    const handleFocusOutside: React.ComponentPropsWithoutRef<
-      typeof SheetPrimitive.Content
-    >['onFocusOutside'] = React.useCallback(
-      (event: SheetFocusOutsideEvent) => {
-        if (shouldPreventOutside(event)) {
-          event.preventDefault();
-        }
-        onFocusOutside?.(event);
-      },
-      [onFocusOutside, shouldPreventOutside]
-    );
-
-    return (
-      <SheetPortal>
-        <SheetOverlay />
-        <SheetPrimitive.Content
-          ref={(node) => {
-            contentRef.current = node as HTMLDivElement | null;
-            if (typeof ref === 'function') {
-              ref(node);
-            } else if (ref) {
-              (ref as React.MutableRefObject<typeof node | null>).current =
-                node;
-            }
-          }}
-          className={cn(sheetVariants({ side }), className)}
-          onInteractOutside={handleInteractOutside}
-          onPointerDownOutside={handlePointerDownOutside}
-          onFocusOutside={handleFocusOutside}
-          {...props}
-        >
-          {children}
-        </SheetPrimitive.Content>
-      </SheetPortal>
-    );
-  }
-);
+>(({ side = 'right', className, children, ...props }, ref) => (
+  <SheetPortal>
+    <SheetOverlay />
+    <SheetPrimitive.Content
+      ref={ref}
+      className={cn(sheetVariants({ side }), className)}
+      {...props}
+    >
+      {children}
+    </SheetPrimitive.Content>
+  </SheetPortal>
+));
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
 const SheetHeader = ({
