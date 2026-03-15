@@ -5,10 +5,37 @@ import { SidebarInset, SidebarProvider } from '@/components/ui';
 import { AppSidebar } from '../app-sidebar/app-sidebar';
 import { AppHeader } from './app-header';
 
+const usageSnippet = [
+  "import { AppHeader } from '@kurlclub/ui-components';",
+  '',
+  'export function AppHeaderExample() {',
+  '  return (',
+  '    <AppHeader>',
+  '      <div className="flex flex-col">',
+  '        <span className="text-sm">Hey, John Doe</span>',
+  '        <span className="text-base font-semibold">Good Morning</span>',
+  '      </div>',
+  '    </AppHeader>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof AppHeader> = {
   title: 'Layout/AppHeader',
   component: AppHeader,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'fullscreen',
   },
   tags: ['autodocs'],

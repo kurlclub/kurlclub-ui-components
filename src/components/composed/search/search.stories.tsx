@@ -4,10 +4,38 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Search } from './search';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Search } from '@kurlclub/ui-components';",
+  '',
+  'export function SearchExample() {',
+  "  const [term, setTerm] = useState('');",
+  '',
+  '  return (',
+  '    <Search',
+  '      onSearch={setTerm}',
+  '      placeholder="Search members..."',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Search> = {
   title: 'Composed/Search',
   component: Search,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

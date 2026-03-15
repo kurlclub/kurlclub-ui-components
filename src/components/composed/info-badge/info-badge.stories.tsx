@@ -2,10 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { InfoBadge } from './info-badge';
 
+const usageSnippet = [
+  "import { InfoBadge } from '@kurlclub/ui-components';",
+  '',
+  'export function InfoBadgeExample() {',
+  '  return <InfoBadge variant="success">Active</InfoBadge>;',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Composed/InfoBadge',
   component: InfoBadge,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

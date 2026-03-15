@@ -8,6 +8,41 @@ import { Form } from '@/components/ui/form';
 import type { Option } from '../multi-select/multi-select';
 import { KFormField, KFormFieldType } from './k-formfield';
 
+const usageSnippet = [
+  "import { useForm } from 'react-hook-form';",
+  "import { Form } from '@kurlclub/ui-components';",
+  "import { KFormField, KFormFieldType } from '@kurlclub/ui-components';",
+  '',
+  'export function KFormFieldExample() {',
+  '  const form = useForm({',
+  "    defaultValues: { name: '' },",
+  '  });',
+  '',
+  '  return (',
+  '    <Form {...form}>',
+  '      <form className="w-[360px]">',
+  '        <KFormField',
+  '          control={form.control}',
+  '          name="name"',
+  '          fieldType={KFormFieldType.INPUT}',
+  '          label="Full Name"',
+  '          placeholder="Enter your name"',
+  '        />',
+  '      </form>',
+  '    </Form>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const options: Option[] = [
   { label: 'Option A', value: 'option-a' },
   { label: 'Option B', value: 'option-b' },
@@ -19,6 +54,20 @@ type FormValues = {
 };
 
 type KFormFieldProps = Parameters<typeof KFormField>[0];
+type WithoutIndexSignature<T> = {
+  [K in keyof T as string extends K
+    ? never
+    : number extends K
+      ? never
+      : symbol extends K
+        ? never
+        : K]: T[K];
+};
+type KFormFieldBaseProps = WithoutIndexSignature<KFormFieldProps>;
+type KFormFieldStoryArgs = Omit<
+  KFormFieldBaseProps,
+  'control' | 'name' | 'renderSkeleton'
+>;
 
 const getDefaultValue = (
   fieldType: KFormFieldType,
@@ -43,10 +92,17 @@ const getDefaultValue = (
   }
 };
 
-const meta = {
+const KFormFieldStoryWrapper = (args: KFormFieldStoryArgs) => (
+  <KFormFieldStory {...args} />
+);
+
+const meta: Meta<typeof KFormFieldStoryWrapper> = {
   title: 'Form/KFormField',
-  component: KFormField,
+  component: KFormFieldStoryWrapper,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],
@@ -59,16 +115,10 @@ const meta = {
     showPresets: false,
     showYearSelector: true,
     options,
-    renderSkeleton: () => (
-      <div className="h-[52px] w-full rounded-md bg-secondary-blue-600" />
-    ),
   },
   argTypes: {
-    control: { table: { disable: true } },
-    name: { table: { disable: true } },
     options: { table: { disable: true } },
     children: { table: { disable: true } },
-    renderSkeleton: { table: { disable: true } },
     fieldType: {
       control: 'select',
       options: Object.values(KFormFieldType),
@@ -88,13 +138,13 @@ const meta = {
       control: 'boolean',
     },
   },
-} satisfies Meta<typeof KFormField>;
+};
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof KFormFieldStoryWrapper>;
 
-const KFormFieldStory = (args: Omit<KFormFieldProps, 'control' | 'name'>) => {
+const KFormFieldStory = (args: KFormFieldStoryArgs) => {
   const form = useForm<FormValues>({
     defaultValues: {
       demo: getDefaultValue(args.fieldType, args.mode),
@@ -110,7 +160,14 @@ const KFormFieldStory = (args: Omit<KFormFieldProps, 'control' | 'name'>) => {
   return (
     <Form {...form}>
       <form className="w-[360px]">
-        <KFormField {...args} control={form.control} name="demo" />
+        <KFormField
+          {...args}
+          control={form.control}
+          name="demo"
+          renderSkeleton={() => (
+            <div className="h-[52px] w-full rounded-md bg-secondary-blue-600" />
+          )}
+        />
       </form>
     </Form>
   );
@@ -118,4 +175,7 @@ const KFormFieldStory = (args: Omit<KFormFieldProps, 'control' | 'name'>) => {
 
 export const Playground: Story = {
   render: (args) => <KFormFieldStory {...args} />,
+  args: {
+    fieldType: KFormFieldType.INPUT,
+  },
 };

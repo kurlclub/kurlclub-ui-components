@@ -21,10 +21,36 @@ import {
   Breadcrumbs,
 } from './breadcrumbs';
 
+const usageSnippet = [
+  "import { Breadcrumbs } from '@kurlclub/ui-components';",
+  '',
+  'const items = [',
+  "  { label: 'Home', href: '/' },",
+  "  { label: 'Members', href: '/members' },",
+  "  { label: 'John Doe' },",
+  '];',
+  '',
+  'export function BreadcrumbsExample() {',
+  '  return <Breadcrumbs items={items} />;',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Composed/Breadcrumbs',
   component: Breadcrumbs,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

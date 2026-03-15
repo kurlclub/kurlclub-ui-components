@@ -5,10 +5,39 @@ import { Input } from '@/components/composed/form';
 
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
+const usageSnippet = [
+  "import { Popover, PopoverTrigger, PopoverContent, Button } from '@kurlclub/ui-components';",
+  '',
+  'export function PopoverExample() {',
+  '  return (',
+  '    <Popover>',
+  '      <PopoverTrigger asChild>',
+  '        <Button variant="outline">Open</Button>',
+  '      </PopoverTrigger>',
+  '      <PopoverContent className="w-64">',
+  '        <p className="text-sm">Popover content</p>',
+  '      </PopoverContent>',
+  '    </Popover>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Popover> = {
   title: 'Composed/Popover',
   component: Popover,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

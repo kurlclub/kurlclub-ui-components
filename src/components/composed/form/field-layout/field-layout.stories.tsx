@@ -8,17 +8,44 @@ import {
   FieldStack,
 } from './field-layout';
 
+const usageSnippet = [
+  "import { FieldRow, FieldColumn } from '@kurlclub/ui-components';",
+  '',
+  'export function FieldLayoutExample() {',
+  '  return (',
+  '    <FieldRow>',
+  '      <FieldColumn>',
+  '        <div className="rounded-md border border-secondary-blue-500/30 bg-secondary-blue-700 px-3 py-2 text-sm text-primary-blue-100">',
+  '          First Name',
+  '        </div>',
+  '      </FieldColumn>',
+  '      <FieldColumn>',
+  '        <div className="rounded-md border border-secondary-blue-500/30 bg-secondary-blue-700 px-3 py-2 text-sm text-primary-blue-100">',
+  '          Last Name',
+  '        </div>',
+  '      </FieldColumn>',
+  '    </FieldRow>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/FieldLayout',
   component: FieldRow,
   parameters: {
-    layout: 'padded',
     docs: {
-      description: {
-        component:
-          'Layout helpers for arranging form fields in rows, stacks, and responsive grids.',
-      },
+      description: { component: usageDescription },
     },
+    layout: 'padded',
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof FieldRow>;
@@ -33,6 +60,7 @@ const SampleField = ({ label }: { label: string }) => (
 );
 
 export const RowWithColumns: Story = {
+  args: { children: null },
   render: () => (
     <FieldRow>
       <FieldColumn>
@@ -46,6 +74,7 @@ export const RowWithColumns: Story = {
 };
 
 export const StackedFields: Story = {
+  args: { children: null },
   render: () => (
     <FieldStack>
       <SampleField label="Email Address" />
@@ -56,6 +85,7 @@ export const StackedFields: Story = {
 };
 
 export const ResponsiveGrid: Story = {
+  args: { children: null },
   render: () => (
     <FieldGrid smColumns={2} mdColumns={3} lgColumns={4}>
       <SampleField label="Field A" />
@@ -71,6 +101,7 @@ export const ResponsiveGrid: Story = {
 };
 
 export const GridWithSpans: Story = {
+  args: { children: null },
   render: () => (
     <FieldGrid columns={1} smColumns={4}>
       <FieldGridItem smSpan={2}>

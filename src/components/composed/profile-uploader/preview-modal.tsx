@@ -7,36 +7,51 @@ interface PreviewModalProps {
   src: string | null;
   onDelete: () => void;
   onReupload: () => void;
+  readonly?: boolean;
+  showDelete?: boolean;
 }
 
 export default function PreviewModal({
   isOpen,
   onClose,
   src,
-  onDelete,
   onReupload,
+  readonly = false,
+  showDelete = true,
+  onDelete,
 }: PreviewModalProps) {
   return (
     <Dialog
       open={isOpen}
       onOpenChange={onClose}
-      title="Profile Picture Preview"
-      className="max-w-[500px]"
+      title="Profile Picture"
+      className="max-w-[400px]"
       footer={
-        <div className="flex items-center gap-2">
-          <Button variant="destructive" onClick={onDelete}>
-            Delete
-          </Button>
-          <Button onClick={onReupload}>Re-upload</Button>
-        </div>
+        readonly ? undefined : (
+          <div className="flex items-center gap-2 w-full">
+            {showDelete ? (
+              <Button
+                variant="destructive"
+                onClick={onDelete}
+                className="flex-1"
+              >
+                Delete
+              </Button>
+            ) : null}
+            <Button onClick={onReupload} className="flex-1">
+              Re-upload
+            </Button>
+          </div>
+        )
       }
     >
       {src && (
-        <div className="flex justify-center">
+        <div className="flex items-center justify-center py-4">
           <img
             src={src}
             alt="Profile picture"
-            className="rounded-full w-[250px] h-[250px] object-cover"
+            className="max-w-full max-h-[60vh] object-contain rounded-lg"
+            style={{ width: 'auto', height: 'auto' }}
           />
         </div>
       )}

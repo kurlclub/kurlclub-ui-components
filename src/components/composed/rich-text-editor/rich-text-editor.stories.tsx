@@ -5,10 +5,40 @@ import type { Meta, StoryObj } from '@storybook/react';
 import type { RichTextEditorProps } from './rich-text-editor';
 import { RichTextEditor } from './rich-text-editor';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { RichTextEditor } from '@kurlclub/ui-components';",
+  '',
+  'export function RichTextEditorExample() {',
+  "  const [content, setContent] = useState('');",
+  '',
+  '  return (',
+  '    <RichTextEditor',
+  '      content={content}',
+  '      onUpdate={setContent}',
+  '      placeholder="Write a note..."',
+  '      toolbarPreset="standard"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof RichTextEditor> = {
   title: 'Composed/RichTextEditor',
   component: RichTextEditor,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],
@@ -18,7 +48,7 @@ export default meta;
 
 type Story = StoryObj<typeof RichTextEditor>;
 
-type EditorStoryProps = RichTextEditorProps & {
+type EditorStoryProps = Omit<RichTextEditorProps, 'content' | 'onUpdate'> & {
   initialContent: string;
   showOutput?: boolean;
 };

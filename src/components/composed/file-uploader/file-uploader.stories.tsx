@@ -4,10 +4,41 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import FileUploader from './file-uploader';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { FileUploader } from '@kurlclub/ui-components';",
+  '',
+  'export function DocumentUploadExample() {',
+  '  const [file, setFile] = useState<File | null>(null);',
+  '',
+  '  return (',
+  '    <FileUploader',
+  '      file={file}',
+  '      onChange={setFile}',
+  '      label="Upload Document"',
+  '      accept=".pdf,.jpg,.jpeg,.png"',
+  '      maxSize={4 * 1024 * 1024}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Uploader/FileUploader',
   component: FileUploader,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'padded',
   },
   tags: ['autodocs'],

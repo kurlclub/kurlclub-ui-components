@@ -5,10 +5,46 @@ import { Home, Settings, User } from 'lucide-react';
 
 import { Tabs } from './tabs';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Tabs } from '@kurlclub/ui-components';",
+  '',
+  'const items = [',
+  "  { id: 'overview', label: 'Overview' },",
+  "  { id: 'members', label: 'Members' },",
+  "  { id: 'settings', label: 'Settings' },",
+  '];',
+  '',
+  'export function TabsExample() {',
+  "  const [value, setValue] = useState('overview');",
+  '',
+  '  return (',
+  '    <Tabs',
+  '      items={items}',
+  '      value={value}',
+  '      onTabChange={setValue}',
+  '      variant="underline"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/Tabs',
   component: Tabs,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

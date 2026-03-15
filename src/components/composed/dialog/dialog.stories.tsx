@@ -8,10 +8,43 @@ import { DialogProvider } from '@/providers/dialog-provider';
 
 import { Dialog } from './dialog';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Dialog, Button } from '@kurlclub/ui-components';",
+  '',
+  'export function DialogExample() {',
+  '  const [open, setOpen] = useState(false);',
+  '',
+  '  return (',
+  '    <Dialog',
+  '      title="Confirm Action"',
+  '      open={open}',
+  '      onOpenChange={setOpen}',
+  '      trigger={<Button onClick={() => setOpen(true)}>Open</Button>}',
+  '      footer={<Button onClick={() => setOpen(false)}>Confirm</Button>}',
+  '    >',
+  '      <p>Are you sure you want to continue?</p>',
+  '    </Dialog>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Dialog> = {
   title: 'Composed/Dialog',
   component: Dialog,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

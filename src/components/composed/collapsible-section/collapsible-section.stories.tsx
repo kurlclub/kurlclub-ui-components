@@ -2,10 +2,37 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { CollapsibleSection } from './collapsible-section';
 
+const usageSnippet = [
+  "import { CollapsibleSection } from '@kurlclub/ui-components';",
+  '',
+  'export function CollapsibleSectionExample() {',
+  '  return (',
+  '    <CollapsibleSection title="Personal Information" defaultOpen>',
+  '      <div className="space-y-2">',
+  '        <p>Name: John Doe</p>',
+  '        <p>Email: john@example.com</p>',
+  '      </div>',
+  '    </CollapsibleSection>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof CollapsibleSection> = {
   title: 'Composed/CollapsibleSection',
   component: CollapsibleSection,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

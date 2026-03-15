@@ -16,17 +16,49 @@ import {
 
 import { DataTable, DataTableToolbar, type FilterConfig } from './index';
 
+const usageSnippet = [
+  "import { DataTable, DataTableToolbar } from '@kurlclub/ui-components';",
+  '',
+  'const columns = [',
+  "  { accessorKey: 'name', header: 'Name' },",
+  "  { accessorKey: 'email', header: 'Email' },",
+  '];',
+  '',
+  'const data = [',
+  "  { name: 'John Doe', email: 'john@example.com' },",
+  "  { name: 'Jane Smith', email: 'jane@example.com' },",
+  '];',
+  '',
+  'export function MembersTable() {',
+  '  return (',
+  '    <DataTable',
+  '      columns={columns}',
+  '      data={data}',
+  '      toolbar={(table) => (',
+  '        <DataTableToolbar table={table} onSearch={() => {}} filters={[]} />',
+  '      )}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Data/DataTable',
   component: DataTable,
   parameters: {
-    layout: 'padded',
     docs: {
-      description: {
-        component:
-          'A powerful data table component with sorting, filtering, pagination, and column visibility controls. Built on TanStack Table.',
-      },
+      description: { component: usageDescription },
     },
+    layout: 'padded',
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof DataTable>;

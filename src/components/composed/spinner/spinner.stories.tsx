@@ -2,10 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Spinner } from './spinner';
 
-const meta = {
+const usageSnippet = [
+  "import { Spinner } from '@kurlclub/ui-components';",
+  '',
+  'export function SpinnerExample() {',
+  '  return <Spinner message="Loading..." size="md" />;',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
+const meta: Meta<typeof Spinner> = {
   title: 'Composed/Spinner',
   component: Spinner,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],
@@ -18,10 +38,10 @@ const meta = {
       control: 'text',
     },
   },
-} satisfies Meta<typeof Spinner>;
+};
 
 export default meta;
-type Story = StoryObj<typeof Spinner>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},

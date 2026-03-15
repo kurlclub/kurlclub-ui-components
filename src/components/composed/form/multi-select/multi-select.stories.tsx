@@ -4,17 +4,46 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { MultiSelect, type Option } from './multi-select';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { MultiSelect } from '@kurlclub/ui-components';",
+  '',
+  'const options = [',
+  "  { label: 'Yoga', value: 'yoga' },",
+  "  { label: 'Strength', value: 'strength' },",
+  '];',
+  '',
+  'export function MultiSelectExample() {',
+  '  const [value, setValue] = useState<string[]>([]);',
+  '',
+  '  return (',
+  '    <MultiSelect',
+  '      label="Programs"',
+  '      options={options}',
+  '      value={value}',
+  '      onChange={setValue}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof MultiSelect> = {
   title: 'Form/MultiSelect',
   component: MultiSelect,
   parameters: {
-    layout: 'centered',
     docs: {
-      description: {
-        component:
-          'A multi-select component with search functionality, badge display, and optional maximum selection limit. Built on top of Radix UI Command and Popover primitives.',
-      },
+      description: { component: usageDescription },
     },
+    layout: 'centered',
   },
   tags: ['autodocs'],
 };

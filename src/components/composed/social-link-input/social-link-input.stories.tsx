@@ -4,10 +4,40 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { SocialLinkInput } from './social-link-input';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { SocialLinkInput } from '@kurlclub/ui-components';",
+  '',
+  'export function SocialLinkInputExample() {',
+  "  const [value, setValue] = useState('');",
+  '',
+  '  return (',
+  '    <SocialLinkInput',
+  '      value={value}',
+  '      onChange={setValue}',
+  '      label="Website"',
+  '      placeholder="https://example.com"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof SocialLinkInput> = {
   title: 'Composed/SocialLinkInput',
   component: SocialLinkInput,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

@@ -16,10 +16,42 @@ import { SidebarInset, SidebarProvider, useSidebar } from '@/components/ui';
 
 import { AppSidebar } from './app-sidebar';
 
+const usageSnippet = [
+  "import { AppSidebar } from '@kurlclub/ui-components';",
+  "import { BarChart3, Users } from 'lucide-react';",
+  '',
+  'const navItems = [',
+  "  { title: 'Dashboard', url: '/dashboard', icon: BarChart3 },",
+  "  { title: 'Members', url: '/members', icon: Users },",
+  '];',
+  '',
+  'export function AppSidebarExample() {',
+  '  return (',
+  '    <AppSidebar',
+  '      navItems={navItems}',
+  '      groupLabel="GENERAL"',
+  '      currentPath="/dashboard"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof AppSidebar> = {
   title: 'Layout/AppSidebar',
   component: AppSidebar,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'fullscreen',
   },
   tags: ['autodocs'],

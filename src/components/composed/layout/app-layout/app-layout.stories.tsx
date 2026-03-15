@@ -8,10 +8,48 @@ import { AppHeader } from '../app-header/app-header';
 import { AppSidebar } from '../app-sidebar/app-sidebar';
 import { AppLayout } from './app-layout';
 
+const usageSnippet = [
+  "import { AppLayout, AppSidebar } from '@kurlclub/ui-components';",
+  "import { BarChart3, Users } from 'lucide-react';",
+  '',
+  'const navItems = [',
+  "  { title: 'Dashboard', url: '/dashboard', icon: BarChart3 },",
+  "  { title: 'Members', url: '/members', icon: Users },",
+  '];',
+  '',
+  'export function AppLayoutExample() {',
+  '  return (',
+  '    <AppLayout',
+  '      sidebar={',
+  '        <AppSidebar',
+  '          navItems={navItems}',
+  '          groupLabel="GENERAL"',
+  '          currentPath="/dashboard"',
+  '        />',
+  '      }',
+  '    >',
+  '      <div className="p-6">Your page content</div>',
+  '    </AppLayout>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof AppLayout> = {
   title: 'Layout/AppLayout',
   component: AppLayout,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'fullscreen',
   },
   tags: ['autodocs'],

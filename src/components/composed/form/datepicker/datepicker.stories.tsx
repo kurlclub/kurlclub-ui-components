@@ -4,10 +4,40 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { KDatePicker } from './datepicker';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { KDatePicker } from '@kurlclub/ui-components';",
+  '',
+  'export function DatePickerExample() {',
+  '  const [date, setDate] = useState<Date | undefined>();',
+  '',
+  '  return (',
+  '    <KDatePicker',
+  '      label="Select Date"',
+  '      value={date}',
+  '      onDateChange={(value) => setDate(value as Date | undefined)}',
+  '      mode="single"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof KDatePicker> = {
   title: 'Data/DatePicker',
   component: KDatePicker,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

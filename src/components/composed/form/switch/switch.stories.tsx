@@ -4,10 +4,39 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Switch } from './switch';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Switch } from '@kurlclub/ui-components';",
+  '',
+  'export function SwitchExample() {',
+  '  const [checked, setChecked] = useState(false);',
+  '',
+  '  return (',
+  '    <Switch',
+  '      checked={checked}',
+  '      onCheckedChange={setChecked}',
+  '      label="Enable notifications"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/Switch',
   component: Switch,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

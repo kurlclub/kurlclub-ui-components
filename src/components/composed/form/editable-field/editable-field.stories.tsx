@@ -7,16 +7,47 @@ import { Button } from '@/components/composed/button/button';
 
 import { EditableFormField } from './editable-field';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { EditableFormField, Button } from '@kurlclub/ui-components';",
+  '',
+  'export function EditableFieldExample() {',
+  "  const [value, setValue] = useState('John Doe');",
+  '  const [isEditing, setIsEditing] = useState(false);',
+  '',
+  '  return (',
+  '    <div className="space-y-3">',
+  '      <Button size="sm" onClick={() => setIsEditing(!isEditing)}>',
+  "        {isEditing ? 'View' : 'Edit'}",
+  '      </Button>',
+  '      <EditableFormField',
+  '        type="input"',
+  '        label="Full Name"',
+  '        value={value}',
+  '        onChange={setValue}',
+  '        isEditing={isEditing}',
+  '      />',
+  '    </div>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/EditableField',
   parameters: {
-    layout: 'centered',
     docs: {
-      description: {
-        component:
-          'An inline editable field component that toggles between view and edit modes. Supports input fields with optional suffix and select dropdowns.',
-      },
+      description: { component: usageDescription },
     },
+    layout: 'centered',
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof EditableFormField>;

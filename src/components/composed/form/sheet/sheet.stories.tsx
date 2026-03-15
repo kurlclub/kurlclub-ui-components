@@ -5,10 +5,46 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../../button/button';
 import { Sheet } from './sheet';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Sheet, Button } from '@kurlclub/ui-components';",
+  '',
+  'export function SheetExample() {',
+  '  const [open, setOpen] = useState(false);',
+  '',
+  '  return (',
+  '    <>',
+  '      <Button onClick={() => setOpen(true)}>Open Sheet</Button>',
+  '      <Sheet',
+  '        title="Edit Profile"',
+  '        isOpen={open}',
+  '        onClose={() => setOpen(false)}',
+  '        position="right"',
+  '        width="sm"',
+  '      >',
+  '        <p>Sheet content goes here.</p>',
+  '      </Sheet>',
+  '    </>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/Sheet',
   component: Sheet,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

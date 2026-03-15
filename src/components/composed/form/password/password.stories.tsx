@@ -4,15 +4,45 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Password } from './password';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Password } from '@kurlclub/ui-components';",
+  '',
+  'export function PasswordExample() {',
+  "  const [value, setValue] = useState('');",
+  '',
+  '  return (',
+  '    <Password',
+  '      label="Password"',
+  '      value={value}',
+  '      onChange={(e) => setValue(e.target.value)}',
+  '      placeholder="Enter password"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 type Variant = 'default' | 'login';
 type StoryArgs = React.ComponentProps<typeof Password> & {
   variant?: Variant;
 };
 
-const meta = {
+const meta: Meta<StoryArgs> = {
   title: 'Form/Password',
   component: Password,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],
@@ -41,10 +71,10 @@ const meta = {
       table: { disable: true },
     },
   },
-} satisfies Meta<StoryArgs>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<StoryArgs>;
 
 export const Default: Story = {
   render: function Component(args) {

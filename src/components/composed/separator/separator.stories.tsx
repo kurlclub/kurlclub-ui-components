@@ -2,10 +2,36 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Separator } from './separator';
 
+const usageSnippet = [
+  "import { Separator } from '@kurlclub/ui-components';",
+  '',
+  'export function SeparatorExample() {',
+  '  return (',
+  '    <div className="space-y-4">',
+  '      <div>Profile</div>',
+  '      <Separator />',
+  '      <div>Preferences</div>',
+  '    </div>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Separator> = {
   title: 'Composed/Separator',
   component: Separator,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

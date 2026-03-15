@@ -45,6 +45,9 @@ export { InfoBanner } from './info-banner/info-banner';
 export { BrandLogo } from './brand-logo/brand-logo';
 export { default as FileUploader } from './file-uploader';
 export { default as ProfileUploader } from './profile-uploader';
+export * from './command/command';
+export { Dialog } from './dialog/dialog';
+export { Popover, PopoverContent, PopoverTrigger } from './popover/popover';
 export { Search } from './search/search';
 export { Breadcrumbs } from './breadcrumbs/breadcrumbs';
 export type {

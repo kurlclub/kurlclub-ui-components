@@ -2,10 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './button';
 
+const usageSnippet = [
+  "import { Button } from '@kurlclub/ui-components';",
+  '',
+  'export function ButtonExample() {',
+  '  return <Button variant="outline">Save changes</Button>;',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Button> = {
   title: 'Composed/Button',
   component: Button,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

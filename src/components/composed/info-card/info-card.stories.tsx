@@ -3,10 +3,41 @@ import { AlertCircle, DollarSign, TrendingUp, Users } from 'lucide-react';
 
 import InfoCard from './info-card';
 
+const usageSnippet = [
+  "import { InfoCard } from '@kurlclub/ui-components';",
+  "import { Users } from 'lucide-react';",
+  '',
+  'export function InfoCardExample() {',
+  '  return (',
+  '    <InfoCard',
+  '      item={{',
+  "        id: '1',",
+  '        icon: <Users className="w-5 h-5 text-primary-blue-500" />,',
+  "        color: 'primary-green-500',",
+  "        title: 'Total Members',",
+  '        count: 1234,',
+  '      }}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Composed/InfoCard',
   component: InfoCard,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'padded',
   },
   tags: ['autodocs'],

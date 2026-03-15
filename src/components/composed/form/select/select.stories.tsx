@@ -4,10 +4,45 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select } from './select';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Select } from '@kurlclub/ui-components';",
+  '',
+  'const options = [',
+  "  { label: 'United States', value: 'US' },",
+  "  { label: 'India', value: 'IN' },",
+  '];',
+  '',
+  'export function SelectExample() {',
+  "  const [value, setValue] = useState('');",
+  '',
+  '  return (',
+  '    <Select',
+  '      label="Select Country"',
+  '      options={options}',
+  '      value={value}',
+  '      onValueChange={setValue}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/Select',
   component: Select,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

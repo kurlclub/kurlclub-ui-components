@@ -23,9 +23,45 @@ import {
   DropdownMenuTrigger,
 } from './dropdown';
 
+const usageSnippet = [
+  'import {',
+  '  DropdownMenu,',
+  '  DropdownMenuTrigger,',
+  '  DropdownMenuContent,',
+  '  DropdownMenuItem,',
+  '  Button,',
+  "} from '@kurlclub/ui-components';",
+  '',
+  'export function DropdownExample() {',
+  '  return (',
+  '    <DropdownMenu>',
+  '      <DropdownMenuTrigger asChild>',
+  '        <Button variant="outline">Open</Button>',
+  '      </DropdownMenuTrigger>',
+  '      <DropdownMenuContent className="w-56" align="start">',
+  '        <DropdownMenuItem>Profile</DropdownMenuItem>',
+  '        <DropdownMenuItem>Settings</DropdownMenuItem>',
+  '      </DropdownMenuContent>',
+  '    </DropdownMenu>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta = {
   title: 'Composed/Dropdown',
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

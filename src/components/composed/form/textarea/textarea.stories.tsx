@@ -4,10 +4,41 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Textarea } from './textarea';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { Textarea } from '@kurlclub/ui-components';",
+  '',
+  'export function TextareaExample() {',
+  "  const [value, setValue] = useState('');",
+  '',
+  '  return (',
+  '    <Textarea',
+  '      label="Notes"',
+  '      value={value}',
+  '      onChange={(e) => setValue(e.target.value)}',
+  '      placeholder="Add a note"',
+  '      rows={4}',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Form/Textarea',
   component: Textarea,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

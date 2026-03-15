@@ -3,10 +3,35 @@ import { Sparkles } from 'lucide-react';
 
 import { InfoBanner } from './info-banner';
 
+const usageSnippet = [
+  "import { InfoBanner } from '@kurlclub/ui-components';",
+  '',
+  'export function InfoBannerExample() {',
+  '  return (',
+  '    <InfoBanner',
+  '      variant="info"',
+  '      message="This is an informational message."',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Composed/InfoBanner',
   component: InfoBanner,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'padded',
   },
   tags: ['autodocs'],

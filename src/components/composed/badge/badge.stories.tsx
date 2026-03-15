@@ -2,10 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Badge } from './badge';
 
+const usageSnippet = [
+  "import { Badge } from '@kurlclub/ui-components';",
+  '',
+  'export function BadgeExample() {',
+  '  return <Badge variant="secondary">Active</Badge>;',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Composed/Badge',
   component: Badge,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

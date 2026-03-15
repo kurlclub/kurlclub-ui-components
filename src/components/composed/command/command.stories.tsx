@@ -17,10 +17,43 @@ import {
   CommandShortcut,
 } from './command';
 
+const usageSnippet = [
+  'import {',
+  '  Command,',
+  '  CommandInput,',
+  '  CommandList,',
+  '  CommandItem,',
+  "} from '@kurlclub/ui-components';",
+  '',
+  'export function CommandExample() {',
+  '  return (',
+  '    <Command className="w-[320px]">',
+  '      <CommandInput placeholder="Search..." />',
+  '      <CommandList>',
+  '        <CommandItem>Dashboard</CommandItem>',
+  '        <CommandItem>Members</CommandItem>',
+  '      </CommandList>',
+  '    </Command>',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta: Meta<typeof Command> = {
   title: 'Composed/Command',
   component: Command,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],

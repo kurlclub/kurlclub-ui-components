@@ -115,25 +115,27 @@ export default function CropModal({
   return (
     <Dialog
       footer={<Button onClick={handleCropComplete}>Crop & Upload</Button>}
-      className="w-[500px]"
+      className="w-[90vw] max-w-[500px]"
       open={isOpen}
       onOpenChange={onClose}
       title="Crop Image"
     >
       {src && (
-        <ReactCrop
-          crop={crop}
-          onChange={(c) => setCrop(c)}
-          onComplete={(c) => setCompletedCrop(c)}
-          aspect={ASPECT_RATIO}
-        >
-          <img
-            src={src}
-            onLoad={(e) => onImageLoad(e.currentTarget)}
-            alt="Crop me"
-            style={{ maxWidth: '100%' }}
-          />
-        </ReactCrop>
+        <div className="max-h-[60vh] overflow-hidden flex items-center justify-center">
+          <ReactCrop
+            crop={crop}
+            onChange={(c) => setCrop(c)}
+            onComplete={(c) => setCompletedCrop(c)}
+            aspect={ASPECT_RATIO}
+          >
+            <img
+              src={src}
+              onLoad={(e) => onImageLoad(e.currentTarget)}
+              alt="Crop me"
+              className="max-h-[60vh] w-auto h-auto"
+            />
+          </ReactCrop>
+        </div>
       )}
     </Dialog>
   );

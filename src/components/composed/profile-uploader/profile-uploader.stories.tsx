@@ -4,10 +4,39 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import ProfilePictureUploader from './profile-uploader';
 
+const usageSnippet = [
+  "import { useState } from 'react';",
+  "import { ProfileUploader } from '@kurlclub/ui-components';",
+  '',
+  'export function ProfilePictureExample() {',
+  '  const [file, setFile] = useState<File | null>(null);',
+  '',
+  '  return (',
+  '    <ProfileUploader',
+  '      files={file}',
+  '      onChange={setFile}',
+  '      existingImageUrl="/assets/tony.png"',
+  '    />',
+  '  );',
+  '}',
+  '',
+].join('\n');
+
+const usageDescription = [
+  'Usage example:',
+  '',
+  '```tsx',
+  usageSnippet,
+  '```',
+  '',
+].join('\n');
 const meta = {
   title: 'Uploader/ProfileUploader',
   component: ProfilePictureUploader,
   parameters: {
+    docs: {
+      description: { component: usageDescription },
+    },
     layout: 'centered',
   },
   tags: ['autodocs'],
@@ -23,6 +52,12 @@ const meta = {
     },
     existingImageUrl: {
       control: 'text',
+    },
+    readonly: {
+      control: 'boolean',
+    },
+    showDelete: {
+      control: 'boolean',
     },
   },
 } satisfies Meta<typeof ProfilePictureUploader>;
