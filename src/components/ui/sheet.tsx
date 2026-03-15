@@ -45,14 +45,38 @@ function SheetOverlay({
   );
 }
 
+type SheetInteractOutsideEvent = Parameters<
+  NonNullable<
+    React.ComponentProps<typeof SheetPrimitive.Content>['onInteractOutside']
+  >
+>[0];
+
 function SheetContent({
   className,
   children,
   side = 'right',
+  onInteractOutside,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left';
 }) {
+  const handleInteractOutside: React.ComponentProps<
+    typeof SheetPrimitive.Content
+  >['onInteractOutside'] = React.useCallback(
+    (event: SheetInteractOutsideEvent) => {
+      if (typeof document !== 'undefined') {
+        const openDialogs = document.querySelectorAll(
+          '[data-state="open"][role="dialog"]'
+        );
+        if (openDialogs.length > 1) {
+          event.preventDefault();
+        }
+      }
+      onInteractOutside?.(event);
+    },
+    [onInteractOutside]
+  );
+
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -70,6 +94,7 @@ function SheetContent({
             'data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t',
           className
         )}
+        onInteractOutside={handleInteractOutside}
         {...props}
       >
         {children}
