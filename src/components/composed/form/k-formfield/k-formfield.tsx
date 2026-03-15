@@ -62,21 +62,24 @@ const CustomPhoneInput = forwardRef<
 
 CustomPhoneInput.displayName = 'CustomPhoneInput';
 
-export enum KFormFieldType {
-  INPUT = 'input',
-  TEXTAREA = 'textarea',
-  PASSWORD = 'password',
-  PHONE_INPUT = 'phoneInput',
-  CHECKBOX = 'checkbox',
-  DATE_PICKER = 'datePicker',
-  UI_DATE_PICKER = 'uidatePicker',
-  DATE_INPUT = 'dateInput',
-  SELECT = 'select',
-  MULTISELECT = 'multiSelect',
-  RICH_TEXT_EDITOR = 'richTextEditor',
-  OTP = 'otp',
-  SKELETON = 'skeleton',
-}
+export const KFormFieldType = {
+  INPUT: 'input',
+  TEXTAREA: 'textarea',
+  PASSWORD: 'password',
+  PHONE_INPUT: 'phoneInput',
+  CHECKBOX: 'checkbox',
+  DATE_PICKER: 'datePicker',
+  UI_DATE_PICKER: 'uidatePicker',
+  DATE_INPUT: 'dateInput',
+  SELECT: 'select',
+  MULTISELECT: 'multiSelect',
+  RICH_TEXT_EDITOR: 'richTextEditor',
+  OTP: 'otp',
+  SKELETON: 'skeleton',
+} as const;
+
+export type KFormFieldType =
+  (typeof KFormFieldType)[keyof typeof KFormFieldType];
 
 interface CustomProps<T extends FieldValues> {
   control: Control<T>;

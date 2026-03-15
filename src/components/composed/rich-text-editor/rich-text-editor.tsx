@@ -296,7 +296,7 @@ export function RichTextEditor({
 
     const currentContent = editor.getHTML();
     if (content !== currentContent) {
-      editor.commands.setContent(content || '', false);
+      editor.commands.setContent(content || '', { emitUpdate: false });
     }
 
     setIsEmpty(editor.isEmpty);
