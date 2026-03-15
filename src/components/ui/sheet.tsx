@@ -50,31 +50,88 @@ type SheetInteractOutsideEvent = Parameters<
     React.ComponentProps<typeof SheetPrimitive.Content>['onInteractOutside']
   >
 >[0];
+type SheetPointerDownOutsideEvent = Parameters<
+  NonNullable<
+    React.ComponentProps<typeof SheetPrimitive.Content>['onPointerDownOutside']
+  >
+>[0];
+type SheetFocusOutsideEvent = Parameters<
+  NonNullable<
+    React.ComponentProps<typeof SheetPrimitive.Content>['onFocusOutside']
+  >
+>[0];
 
 function SheetContent({
   className,
   children,
   side = 'right',
   onInteractOutside,
+  onFocusOutside,
+  onPointerDownOutside,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left';
 }) {
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
+
+  const shouldPreventOutside = React.useCallback((event: Event) => {
+    const target = event.target instanceof HTMLElement ? event.target : null;
+    const dialogAncestor = target?.closest?.('[role="dialog"]');
+
+    if (
+      dialogAncestor &&
+      contentRef.current &&
+      dialogAncestor !== contentRef.current
+    ) {
+      return true;
+    }
+
+    if (typeof document !== 'undefined') {
+      const openDialogs = document.querySelectorAll(
+        '[data-state="open"][role="dialog"]'
+      );
+      if (openDialogs.length > 1) {
+        return true;
+      }
+    }
+
+    return false;
+  }, []);
+
   const handleInteractOutside: React.ComponentProps<
     typeof SheetPrimitive.Content
   >['onInteractOutside'] = React.useCallback(
     (event: SheetInteractOutsideEvent) => {
-      if (typeof document !== 'undefined') {
-        const openDialogs = document.querySelectorAll(
-          '[data-state="open"][role="dialog"]'
-        );
-        if (openDialogs.length > 1) {
-          event.preventDefault();
-        }
+      if (shouldPreventOutside(event)) {
+        event.preventDefault();
       }
       onInteractOutside?.(event);
     },
-    [onInteractOutside]
+    [onInteractOutside, shouldPreventOutside]
+  );
+
+  const handlePointerDownOutside: React.ComponentProps<
+    typeof SheetPrimitive.Content
+  >['onPointerDownOutside'] = React.useCallback(
+    (event: SheetPointerDownOutsideEvent) => {
+      if (shouldPreventOutside(event)) {
+        event.preventDefault();
+      }
+      onPointerDownOutside?.(event);
+    },
+    [onPointerDownOutside, shouldPreventOutside]
+  );
+
+  const handleFocusOutside: React.ComponentProps<
+    typeof SheetPrimitive.Content
+  >['onFocusOutside'] = React.useCallback(
+    (event: SheetFocusOutsideEvent) => {
+      if (shouldPreventOutside(event)) {
+        event.preventDefault();
+      }
+      onFocusOutside?.(event);
+    },
+    [onFocusOutside, shouldPreventOutside]
   );
 
   return (
@@ -82,6 +139,7 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
+        ref={contentRef}
         className={cn(
           'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
           side === 'right' &&
@@ -95,6 +153,8 @@ function SheetContent({
           className
         )}
         onInteractOutside={handleInteractOutside}
+        onPointerDownOutside={handlePointerDownOutside}
+        onFocusOutside={handleFocusOutside}
         {...props}
       >
         {children}
