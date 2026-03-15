@@ -24,6 +24,7 @@ export default function PreviewModal({
     <Dialog
       open={isOpen}
       onOpenChange={onClose}
+      modal={false}
       title="Profile Picture"
       className="max-w-[400px]"
       footer={

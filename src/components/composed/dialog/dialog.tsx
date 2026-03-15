@@ -15,6 +15,7 @@ interface DialogProps {
   footer?: React.ReactNode;
   className?: string;
   closable?: boolean;
+  modal?: boolean;
   open?: boolean;
   onOpenChange?: () => void;
 }
@@ -22,6 +23,7 @@ interface DialogProps {
 const DialogComponent: React.FC<DialogProps> = ({
   title,
   closable = true,
+  modal = true,
   trigger,
   children,
   className,
@@ -30,7 +32,7 @@ const DialogComponent: React.FC<DialogProps> = ({
   footer,
 }) => {
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange} modal={modal}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
         closable={closable}
