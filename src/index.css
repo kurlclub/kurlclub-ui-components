@@ -196,6 +196,24 @@
   @apply bg-secondary-blue-700! border-primary-blue-400! text-white!;
 }
 
+.shad-select-content {
+  z-index: 200;
+  max-height: var(--radix-select-content-available-height, 320px);
+  overflow: hidden;
+  pointer-events: auto;
+  overscroll-behavior: contain;
+}
+
+.shad-select-content [data-radix-select-viewport] {
+  max-height: var(--radix-select-content-available-height, 320px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+[data-radix-popper-content-wrapper] > [role='dialog'] {
+  z-index: 200;
+}
+
 @utility shad-select-item {
   @apply hover:bg-secondary-blue-600! k-transition! py-2! cursor-pointer! data-[state=checked]:bg-secondary-blue-600! data-[state=checked]:text-primary-green-500!;
 }
