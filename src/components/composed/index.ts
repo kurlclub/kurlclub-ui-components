@@ -15,6 +15,7 @@ export type {
 
 export {
   Input,
+  PhoneInput,
   MultiSelect,
   Password,
   Select,
@@ -34,6 +35,10 @@ export {
   FieldStack,
 } from './form';
 export type { InputProps } from './form/input/input';
+export type {
+  PhoneInputProps,
+  PhoneInputValue,
+} from './form/phone-input/phone-input';
 export type { Option } from './form/multi-select/multi-select';
 export type { TabItem, TabVariant, TabsProps } from './form/tabs/tabs';
 export type { SheetProps } from './form/sheet/sheet';

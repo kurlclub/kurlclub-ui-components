@@ -1,4 +1,5 @@
 export { Input } from './input/input';
+export { PhoneInput } from './phone-input/phone-input';
 export { MultiSelect } from './multi-select/multi-select';
 export { Password } from './password/password';
 export { Select } from './select/select';
@@ -18,5 +19,9 @@ export {
   FieldStack,
 } from './field-layout';
 export type { Option } from './multi-select/multi-select';
+export type {
+  PhoneInputProps,
+  PhoneInputValue,
+} from './phone-input/phone-input';
 export type { TabItem, TabVariant, TabsProps } from './tabs/tabs';
 export type { SheetProps } from './sheet/sheet';

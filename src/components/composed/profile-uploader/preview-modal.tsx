@@ -8,7 +8,6 @@ interface PreviewModalProps {
   onDelete: () => void;
   onReupload: () => void;
   readonly?: boolean;
-  showDelete?: boolean;
 }
 
 export default function PreviewModal({
@@ -17,28 +16,19 @@ export default function PreviewModal({
   src,
   onReupload,
   readonly = false,
-  showDelete = true,
-  onDelete,
 }: PreviewModalProps) {
   return (
     <Dialog
       open={isOpen}
       onOpenChange={onClose}
-      modal={false}
       title="Profile Picture"
-      className="max-w-[400px]"
+      className="max-w-100"
       footer={
         readonly ? undefined : (
           <div className="flex items-center gap-2 w-full">
-            {showDelete ? (
-              <Button
-                variant="destructive"
-                onClick={onDelete}
-                className="flex-1"
-              >
-                Delete
-              </Button>
-            ) : null}
+            {/* <Button variant="destructive" onClick={onDelete} className="flex-1">
+              Delete
+            </Button> */}
             <Button onClick={onReupload} className="flex-1">
               Re-upload
             </Button>

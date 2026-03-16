@@ -56,9 +56,6 @@ const meta = {
     readonly: {
       control: 'boolean',
     },
-    showDelete: {
-      control: 'boolean',
-    },
   },
 } satisfies Meta<typeof ProfilePictureUploader>;
 

@@ -1,17 +1,13 @@
 'use client';
 
-import { forwardRef } from 'react';
 import {
   type Control,
   type ControllerRenderProps,
   type FieldPath,
   type FieldValues,
 } from 'react-hook-form';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
 
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
-import type { E164Number } from 'libphonenumber-js/core';
 
 import { KDateInput } from '@/components/composed/form/date-input';
 import { KDatePicker } from '@/components/composed/form/datepicker';
@@ -19,6 +15,10 @@ import { Input } from '@/components/composed/form/input/input';
 import type { Option } from '@/components/composed/form/multi-select/multi-select';
 import { MultiSelect } from '@/components/composed/form/multi-select/multi-select';
 import { Password } from '@/components/composed/form/password/password';
+import {
+  PhoneInput,
+  type PhoneInputValue,
+} from '@/components/composed/form/phone-input/phone-input';
 import { Select } from '@/components/composed/form/select/select';
 import { Textarea } from '@/components/composed/form/textarea/textarea';
 import {
@@ -40,27 +40,6 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp';
 import { safeParseDate, toUtcDateOnlyISOString } from '@/lib/utils';
-
-const CustomPhoneInput = forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
->((props, ref) => (
-  <input
-    {...props}
-    ref={ref}
-    onFocus={(e) => {
-      props.onFocus?.(e);
-      requestAnimationFrame(() => {
-        e.target.setSelectionRange(
-          e.target.value.length,
-          e.target.value.length
-        );
-      });
-    }}
-  />
-));
-
-CustomPhoneInput.displayName = 'CustomPhoneInput';
 
 export const KFormFieldType = {
   INPUT: 'input',
@@ -227,19 +206,11 @@ const RenderField = <T extends FieldValues>({
       return (
         <FormControl>
           <PhoneInput
-            defaultCountry="IN"
             placeholder={placeholder}
-            international
-            withCountryCallingCode
-            value={field.value as E164Number | undefined}
+            value={field.value as PhoneInputValue}
             onChange={field.onChange}
-            className={`peer ${className ? className : 'input-phone'}`}
-            countrySelectProps={{
-              className: 'country-select',
-              tabIndex: -1,
-            }}
-            smartCaret={false}
-            inputComponent={CustomPhoneInput}
+            className={className}
+            disabled={props.disabled}
           />
         </FormControl>
       );

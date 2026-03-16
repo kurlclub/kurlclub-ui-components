@@ -118,7 +118,6 @@ export default function CropModal({
       className="w-[90vw] max-w-[500px]"
       open={isOpen}
       onOpenChange={onClose}
-      modal={false}
       title="Crop Image"
     >
       {src && (

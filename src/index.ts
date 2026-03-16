@@ -119,6 +119,7 @@ export {
 // Form components
 export {
   Input,
+  PhoneInput,
   MultiSelect,
   Password,
   Select,
@@ -139,6 +140,8 @@ export {
 } from './components/composed';
 export type {
   InputProps,
+  PhoneInputProps,
+  PhoneInputValue,
   Option,
   TabItem,
   TabVariant,
