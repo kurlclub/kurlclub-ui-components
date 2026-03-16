@@ -42,6 +42,9 @@ export function PhoneInput({
   inputComponent,
   ...props
 }: PhoneInputProps) {
+  const resolvedClassName =
+    className && className.trim().length > 0 ? className : 'input-phone';
+
   return (
     <PhoneInputBase
       {...props}
@@ -49,7 +52,7 @@ export function PhoneInput({
       international={international ?? true}
       withCountryCallingCode={withCountryCallingCode ?? true}
       smartCaret={smartCaret ?? false}
-      className={`peer ${className ?? 'input-phone'}`}
+      className={`peer ${resolvedClassName}`}
       countrySelectProps={{
         className: 'country-select',
         tabIndex: -1,
