@@ -455,7 +455,7 @@ export default {
             { label: 'Tailwind', value: '4.x' },
             { label: 'Radix UI', value: 'Latest' },
             { label: 'Storybook', value: '10.x' },
-            { label: 'Version', value: 'v1.1.25' },
+            { label: 'Version', value: 'v1.1.26' },
           ].map((tech) => (
             <div
               key={tech.label}

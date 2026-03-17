@@ -56,14 +56,22 @@ export default function ProfilePictureUploader({
     }
   };
 
-  const handleCrop = (croppedImage: string) => {
-    if (currentFile) {
-      const croppedFile = new File([currentFile], currentFile.name, {
-        type: currentFile.type,
+  const handleCrop = async (croppedImage: string) => {
+    if (!currentFile) return;
+    try {
+      const response = await fetch(croppedImage);
+      const blob = await response.blob();
+      const croppedFile = new File([blob], currentFile.name, {
+        type: blob.type || currentFile.type,
       });
       setImage(croppedImage);
       setCropModalOpen(false);
       onChange(croppedFile);
+    } catch (error) {
+      console.error('Failed to build cropped file:', error);
+      setImage(croppedImage);
+      setCropModalOpen(false);
+      onChange(currentFile);
     }
   };
 
